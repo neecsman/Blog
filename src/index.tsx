@@ -1,6 +1,12 @@
+import { BrowserRouter } from "react-router-dom";
 import { render } from "react-dom";
-import style from "./App.module.scss";
+import App from "./App";
+import ThemeProvider from "./styles/theme/ThemeProvider";
 render(
-  <div className={style.text}>asdasdasd</div>,
+  <BrowserRouter>
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  </BrowserRouter>,
   document.getElementById("root")
 );
