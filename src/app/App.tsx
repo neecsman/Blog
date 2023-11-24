@@ -1,22 +1,23 @@
 import { Route, Routes } from "react-router-dom";
-import About from "./pages/About/About";
-import Main from "./pages/Main/Main";
 import { Link } from "react-router-dom";
 import "./styles/index.scss";
 
-import { useTheme } from "./styles/theme/useTheme";
+import { useTheme } from "./providers/ThemeProvider";
+import { LazyAbout } from "pages/About/LazyAbout";
+import { LazyMain } from "pages/Main/LazyMain";
+import { classNames } from "helpers/classNames/classNames";
 
 const App = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className={`app ${theme}`}>
+    <div className={classNames("app", {}, [theme])}>
       <Link to={"/about"}>About</Link>
       <Link to={"/"}>Main</Link>
       <button onClick={toggleTheme}>Поменять тему</button>
       <Routes>
-        <Route path="/about" element={<About />} />
-        <Route path="/" element={<Main />} />
+        <Route path="/about" element={<LazyAbout />} />
+        <Route path="/" element={<LazyMain />} />
       </Routes>
     </div>
   );
