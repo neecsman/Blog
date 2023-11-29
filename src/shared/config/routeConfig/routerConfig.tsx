@@ -17,7 +17,7 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
     element: <Main />,
   },
   [AppRoutes.ABOUT]: {
-    path: RouterPath.main,
+    path: RouterPath.about,
     element: <About />,
   },
 };
