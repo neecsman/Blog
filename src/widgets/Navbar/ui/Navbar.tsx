@@ -1,4 +1,4 @@
-import { classNames } from "helpers/classNames/classNames";
+import { classNames } from "helpers";
 import React from "react";
 import { Link } from "react-router-dom";
 import style from "./Navbar.module.scss";

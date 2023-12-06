@@ -1,4 +1,4 @@
-import { classNames } from "helpers/classNames/classNames";
+import { classNames } from "helpers";
 import style from "./AppLink.module.scss";
 import { Link, LinkProps } from "react-router-dom";
 

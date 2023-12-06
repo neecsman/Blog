@@ -1,6 +1,6 @@
 import { Suspense, useEffect } from "react";
 import { useTheme } from "./providers/ThemeProvider";
-import { classNames } from "../helpers/classNames/classNames";
+import { classNames } from "helpers";
 import { AppRouter } from "./providers/router";
 import { Navbar } from "widgets/Navbar";
 import { Sidebar } from "widgets/Sidebar";

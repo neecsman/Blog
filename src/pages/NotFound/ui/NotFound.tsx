@@ -1,4 +1,4 @@
-import { classNames } from "helpers/classNames/classNames";
+import { classNames } from "helpers";
 import style from "./NotFound.module.scss";
 import { useTranslation } from "react-i18next";
 
