@@ -1,4 +1,4 @@
-import { classNames } from "helpers/classNames/classNames";
+import { classNames } from "helpers";
 import React, { ButtonHTMLAttributes } from "react";
 
 import style from "./Button.module.scss";

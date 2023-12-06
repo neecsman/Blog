@@ -1,5 +1,5 @@
 import { Theme, useTheme } from "app/providers/ThemeProvider";
-import { classNames } from "helpers/classNames/classNames";
+import { classNames } from "helpers";
 
 import LightIcon from "shared/assets/icons/theme-light.svg";
 import DarkIcon from "shared/assets/icons/theme-dark.svg";
