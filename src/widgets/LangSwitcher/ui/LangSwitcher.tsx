@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import Button, { VariantButton } from "shared/ui/Button/Button";
+import Button, { ButtonVariant } from "shared/ui/Button/Button";
 import { classNames } from "helpers";
 
 import style from "./LangSwitcher.module.scss";
@@ -17,7 +17,7 @@ const LangSwitcher: React.FC<LangSwitcherProps> = ({ className }) => {
   return (
     <Button
       className={classNames(style.langSwithcer, {}, [className])}
-      variant={VariantButton.OUTLINE}
+      variant={ButtonVariant.OUTLINE}
       onClick={toggle}
     >
       {t("language")}

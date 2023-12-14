@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Button, { VariantButton } from "./Button";
+import Button, { ButtonVariant } from "./Button";
 import { Theme } from "app/providers/ThemeProvider";
 import themeDecorator from "../../../../config/storybook/decorators/themeDecorator";
 
@@ -11,7 +11,7 @@ const meta = {
   tags: ["autodocs"],
 
   argTypes: {
-    variant: VariantButton,
+    variant: ButtonVariant,
   },
 } satisfies Meta<typeof Button>;
 
@@ -28,7 +28,7 @@ export const Primary: Story = {
 export const Clear: Story = {
   args: {
     children: "Button",
-    variant: VariantButton.CLEAR,
+    variant: ButtonVariant.CLEAR,
   },
 };
 
@@ -36,7 +36,7 @@ export const Outline: Story = {
   decorators: [themeDecorator(Theme.LIGHT)],
   args: {
     children: "Button",
-    variant: VariantButton.OUTLINE,
+    variant: ButtonVariant.OUTLINE,
   },
 };
 
@@ -44,6 +44,6 @@ export const OutlineDark: Story = {
   decorators: [themeDecorator(Theme.DARK)],
   args: {
     children: "Button",
-    variant: VariantButton.OUTLINE,
+    variant: ButtonVariant.OUTLINE,
   },
 };

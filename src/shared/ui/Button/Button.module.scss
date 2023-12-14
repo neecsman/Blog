@@ -1,19 +1,62 @@
 .button {
+  border-radius: 5px;
   cursor: pointer;
   color: var(--primary-color);
+  padding: 5px;
+  transition: all 0.1s ease;
 }
 
-.clear {
-  padding: 0;
+//variant
 
+.solid {
   border: none;
-  background: none;
+  background: var(--button-primary-color);
   outline: none;
 }
 
+.clear {
+  border: none;
+  background: none;
+  outline: none;
+  padding: 0;
+}
+
 .outline {
-  padding: 15px;
   border: 1px solid var(--primary-color);
   color: var(--primary-color);
   background: none;
+}
+
+.ghost {
+  border: none;
+  background: none;
+  outline: none;
+  &:hover {
+    background: var(--button-primary-color);
+  }
+}
+
+//attachment
+
+.square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//size
+
+.square.size_m {
+  width: var(--button-size-m);
+  height: var(--button-size-m);
+}
+
+.square.size_l {
+  width: var(--button-size-l);
+  height: var(--button-size-l);
+}
+
+.square.size_xl {
+  width: var(--button-size-xl);
+  height: var(--button-size-xl);
 }

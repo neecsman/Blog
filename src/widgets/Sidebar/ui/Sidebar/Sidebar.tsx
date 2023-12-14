@@ -4,6 +4,9 @@ import { useState } from "react";
 import { ThemeSwithcer } from "widgets/ThemeSwitcher";
 import { LangSwitcher } from "widgets/LangSwitcher";
 import { Theme } from "app/providers/ThemeProvider";
+import { Button } from "shared/ui";
+import { ButtonVariant } from "shared/ui/Button/Button";
+import SidebarIcon from "shared/assets/icons/hamburger-sidebar.svg";
 interface SidebarProps {
   className?: string;
   theme?: Theme;
@@ -23,9 +26,15 @@ const Sidebar: React.FC<SidebarProps> = ({ className, theme }) => {
         theme,
       ])}
     >
-      <button data-testid="sidebar-toggle" onClick={onToggle}>
-        toggle
-      </button>
+      <Button
+        variant={ButtonVariant.SOLID}
+        className={style.collapseBtn}
+        data-testid="sidebar-toggle"
+        onClick={onToggle}
+        square
+      >
+        <SidebarIcon />
+      </Button>
       <div className={style.switcher}>
         <ThemeSwithcer />
         <LangSwitcher className={style.lang} />
