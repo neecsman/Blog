@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import style from "./Navbar.module.scss";
 import AppLink, { AppLinkTheme } from "shared/ui/AppLink/AppLink";
+import ThemeSwitcher from "widgets/ThemeSwitcher/ui/ThemeSwitcher";
 
 interface NavbarProps {
   className?: string;

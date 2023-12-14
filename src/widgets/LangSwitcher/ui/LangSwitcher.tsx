@@ -19,6 +19,7 @@ const LangSwitcher: React.FC<LangSwitcherProps> = ({ className }) => {
       className={classNames(style.langSwithcer, {}, [className])}
       variant={ButtonVariant.OUTLINE}
       onClick={toggle}
+      square
     >
       {t("language")}
     </Button>

@@ -27,7 +27,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className, theme }) => {
       ])}
     >
       <Button
-        variant={ButtonVariant.SOLID}
+        variant={ButtonVariant.OUTLINE}
         className={style.collapseBtn}
         data-testid="sidebar-toggle"
         onClick={onToggle}
