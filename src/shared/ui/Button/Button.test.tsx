@@ -8,7 +8,7 @@ describe("Button", () => {
   });
 
   test("Test clear theme", () => {
-    render(<Button variant={ButtonVariant.CLEAR}>TEST</Button>);
-    expect(screen.getByText("TEST")).toHaveClass("clear");
+    render(<Button variant={ButtonVariant.SOLID}>TEST</Button>);
+    expect(screen.getByText("TEST")).toHaveClass("solid");
   });
 });

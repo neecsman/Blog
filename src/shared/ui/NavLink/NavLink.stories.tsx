@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import AppLink, { AppLinkTheme } from "./AppLink";
+import AppLink, { NavLinkTheme } from "./NavLink";
 import { Theme } from "app/providers/ThemeProvider";
 import themeDecorator from "../../../../config/storybook/decorators/themeDecorator";
 
 const meta = {
-  title: "shared/AppLink",
+  title: "shared/NavLink",
   component: AppLink,
   parameters: {},
   args: {
@@ -22,14 +22,14 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     children: "Link",
-    theme: AppLinkTheme.PRIMARY,
+    theme: NavLinkTheme.PRIMARY,
   },
 };
 
 export const Secondary: Story = {
   args: {
     children: "Link",
-    theme: AppLinkTheme.SECONDARY,
+    theme: NavLinkTheme.SECONDARY,
   },
 };
 
@@ -37,7 +37,7 @@ export const PrimaryDark: Story = {
   decorators: [themeDecorator(Theme.DARK)],
   args: {
     children: "Link",
-    theme: AppLinkTheme.PRIMARY,
+    theme: NavLinkTheme.PRIMARY,
   },
 };
 
@@ -45,6 +45,6 @@ export const SecondaryDark: Story = {
   decorators: [themeDecorator(Theme.DARK)],
   args: {
     children: "Link",
-    theme: AppLinkTheme.SECONDARY,
+    theme: NavLinkTheme.SECONDARY,
   },
 };

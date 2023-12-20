@@ -4,7 +4,12 @@
   color: var(--primary-color);
   padding: 10px;
   transition: all 0.1s ease;
-  width: 100%;
+}
+
+.icon {
+  svg {
+    fill: var(--primary-color);
+  }
 }
 
 // color scheme
@@ -98,15 +103,9 @@
   outline: none;
 }
 
-.clear {
-  border: none;
-  background: none;
-  outline: none;
-  padding: 0;
-}
-
 .outline {
   border: 1px solid var(--button-secondary-color);
+
   color: var(--primary-color);
   background: none;
 }
@@ -123,7 +122,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px;
 }
 
 .icon {
