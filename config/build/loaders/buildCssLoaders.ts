@@ -18,7 +18,9 @@ export function buildCssLoaders(isDev: boolean) {
       },
       {
         loader: "sass-loader",
-        options: { implementation: require.resolve("sass") },
+        options: {
+          implementation: require.resolve("sass"),
+        },
       },
     ],
   };

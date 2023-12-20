@@ -1,12 +1,50 @@
 .app.dark {
-  --bg-color: #3c3c3c;
-  --inverted-bg-color: #2f2f2f;
+  --bg-color: #252525;
+  --inverted-bg-color: #191919;
 
-  --primary-color: #7f7f7f;
+  --primary-color: #d9d9d9;
   --secondary-color: #797979;
   --inverted-primary-color: #252525;
   --inverted-secondary-color: #4f4f4f;
 
   --button-primary-color: #272727;
   --button-secondary-color: #4b4b4b;
+
+  //color scheme
+
+  --color-gray: #373737;
+  --color-gray-lighten: #242424;
+  --color-gray-darken: #212121;
+
+  --color-red: #e53e3e;
+  --color-red-lighten: #ee4646;
+  --color-red-darken: #cc3636;
+
+  --color-orange: #dd6b20;
+  --color-orange-lighten: #e08040;
+  --color-orange-darken: #d35c0c;
+
+  --color-yellow: #f6e05e;
+  --color-yellow-lighten: #ffed88;
+  --color-yellow-darken: #edce20;
+
+  --color-green: #38a169;
+  --color-green-lighten: #42bf7c;
+  --color-green-darken: #2a925b;
+
+  --color-teal: #319795;
+  --color-teal-lighten: #3cb7b5;
+  --color-teal-darken: #2d8684;
+
+  --color-blue: #3182ce;
+  --color-blue-lighten: #4591d9;
+  --color-blue-darken: #2574bd;
+
+  --color-purple: #805ad5;
+  --color-purple-lighten: #9067e7;
+  --color-purple-darken: #744ec6;
+
+  --color-pink: #d53f8c;
+  --color-pink-lighten: #e24b99;
+  --color-pink-darken: #c02e79;
 }

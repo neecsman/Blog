@@ -1,4 +1,7 @@
 {
-  "language": "RU"
-  
+  "language": "RU",
+  "route": {
+    "main": "Главная",
+    "about": "О нас"
+  }
 }

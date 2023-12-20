@@ -2,15 +2,99 @@
   border-radius: 5px;
   cursor: pointer;
   color: var(--primary-color);
-  padding: 5px;
+  padding: 10px;
   transition: all 0.1s ease;
+  width: 100%;
+}
+
+// color scheme
+
+.gray {
+  background: var(--color-gray);
+  &:hover {
+    background: var(--color-gray-lighten);
+  }
+  &:active {
+    background: var(--color-gray-darken);
+  }
+}
+.red {
+  background: var(--red);
+  &:hover {
+    background: var(--color-red-lighten);
+  }
+  &:active {
+    background: var(--color-red-darken);
+  }
+}
+.orange {
+  background: var(--orange);
+  &:hover {
+    background: var(--color-orange-lighten);
+  }
+  &:active {
+    background: var(--color-orange-darken);
+  }
+}
+.yellow {
+  background: var(--yellow);
+  &:hover {
+    background: var(--color-yellow-lighten);
+  }
+  &:active {
+    background: var(--color-yellow-darken);
+  }
+}
+.green {
+  background: var(--green);
+  &:hover {
+    background: var(--color-green-lighten);
+  }
+  &:active {
+    background: var(--color-green-darken);
+  }
+}
+.teal {
+  background: var(--teal);
+  &:hover {
+    background: var(--color-teal-lighten);
+  }
+  &:active {
+    background: var(--color-teal-darken);
+  }
+}
+.blue {
+  background: var(--blue);
+  &:hover {
+    background: var(--color-blue-lighten);
+  }
+  &:active {
+    background: var(--color-blue-darken);
+  }
+}
+.purple {
+  background: var(--purple);
+  &:hover {
+    background: var(--color-purple-lighten);
+  }
+  &:active {
+    background: var(--color-purple-darken);
+  }
+}
+.pink {
+  background: var(--pink);
+  &:hover {
+    background: var(--color-pink-lighten);
+  }
+  &:active {
+    background: var(--color-pink-darken);
+  }
 }
 
 //variant
 
 .solid {
   border: none;
-  background: var(--button-primary-color);
   outline: none;
 }
 
@@ -25,18 +109,12 @@
   border: 1px solid var(--button-secondary-color);
   color: var(--primary-color);
   background: none;
-  &:hover {
-    background: var(--button-primary-color);
-  }
 }
 
 .ghost {
   border: none;
   background: none;
   outline: none;
-  &:hover {
-    background: var(--button-primary-color);
-  }
 }
 
 //attachment
@@ -45,6 +123,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 5px;
+}
+
+.icon {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
 }
 
 //size

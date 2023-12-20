@@ -18,12 +18,9 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ className }) => {
       variant={ButtonVariant.CLEAR}
       className={classNames(style.themeSwithcer, {}, [className])}
       onClick={toggleTheme}
+      square
     >
-      {theme === Theme.DARK ? (
-        <LightIcon width={30} height={30} />
-      ) : (
-        <DarkIcon width={30} height={30} />
-      )}
+      {theme === Theme.DARK ? <LightIcon /> : <DarkIcon />}
     </Button>
   );
 };

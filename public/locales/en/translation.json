@@ -1,4 +1,7 @@
 {
-  "language": "EN"
-  
+  "language": "EN",
+  "route": {
+    "main": "Main",
+    "about": "About"
+  }
 }
