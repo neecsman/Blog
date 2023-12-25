@@ -24,7 +24,7 @@
   }
 }
 .red {
-  background: var(--red);
+  background: var(--color-red);
   &:hover {
     background: var(--color-red-lighten);
   }
@@ -33,7 +33,7 @@
   }
 }
 .orange {
-  background: var(--orange);
+  background: var(--color-orange);
   &:hover {
     background: var(--color-orange-lighten);
   }
@@ -42,7 +42,7 @@
   }
 }
 .yellow {
-  background: var(--yellow);
+  background: var(--color-yellow);
   &:hover {
     background: var(--color-yellow-lighten);
   }
@@ -51,7 +51,7 @@
   }
 }
 .green {
-  background: var(--green);
+  background: var(--color-green);
   &:hover {
     background: var(--color-green-lighten);
   }
@@ -60,7 +60,7 @@
   }
 }
 .teal {
-  background: var(--teal);
+  background: var(--color-teal);
   &:hover {
     background: var(--color-teal-lighten);
   }
@@ -69,7 +69,7 @@
   }
 }
 .blue {
-  background: var(--blue);
+  background: var(--color-blue);
   &:hover {
     background: var(--color-blue-lighten);
   }
@@ -78,16 +78,16 @@
   }
 }
 .purple {
-  background: var(--purple);
+  background: var(--color-purple);
   &:hover {
     background: var(--color-purple-lighten);
   }
   &:active {
-    background: var(--color-purple-darken);
+    background: var(--color-color-purple-darken);
   }
 }
 .pink {
-  background: var(--pink);
+  background: var(--color-pink);
   &:hover {
     background: var(--color-pink-lighten);
   }
@@ -118,12 +118,6 @@
 
 //attachment
 
-.square {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .icon {
   display: flex;
   justify-content: start;
@@ -133,17 +127,22 @@
 
 //size
 
-.square.size_m {
+.icon.size_s {
+  width: var(--button-size-s);
+  height: var(--button-size-s);
+}
+
+.icon.size_m {
   width: var(--button-size-m);
   height: var(--button-size-m);
 }
 
-.square.size_l {
+.icon.size_l {
   width: var(--button-size-l);
   height: var(--button-size-l);
 }
 
-.square.size_xl {
+.icon.size_xl {
   width: var(--button-size-xl);
   height: var(--button-size-xl);
 }

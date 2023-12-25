@@ -18,36 +18,17 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const ButtonLight: Story = {
+export const ButtonText: Story = {
   args: {
     children: "Button",
     variant: ButtonVariant.SOLID,
   },
 };
 
-export const ButtonDark: Story = {
-  decorators: [themeDecorator(Theme.DARK)],
-  args: {
-    children: "Button",
-    variant: ButtonVariant.SOLID,
-  },
-};
-
-export const ButtonIconLight: Story = {
+export const ButtonIcon: Story = {
   args: {
     icon: <Collapse />,
     variant: ButtonVariant.SOLID,
     size: ButtonSize.L,
-    square: true,
-  },
-};
-
-export const ButtonIconDark: Story = {
-  decorators: [themeDecorator(Theme.DARK)],
-  args: {
-    icon: <Collapse />,
-    variant: ButtonVariant.SOLID,
-    size: ButtonSize.L,
-    square: true,
   },
 };

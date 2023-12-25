@@ -1,12 +1,10 @@
-import { Theme, ThemeProvider } from "app/providers/ThemeProvider";
-import { StoryFn } from "@storybook/react";
+import { Theme, ThemeProvider, useTheme } from "app/providers/ThemeProvider";
+import { StoryContext, StoryFn } from "@storybook/react";
 
-const themeDecorator = (theme: Theme) => (Story: StoryFn) => {
-  return (
-    <ThemeProvider>
-      <div className={`app storybook_wrapper ${theme}`}>{<Story />}</div>
-    </ThemeProvider>
-  );
+const themeDecorator = (Story: StoryFn, context: StoryContext) => {
+  const theme = context.globals.theme;
+
+  return <div className={`app storybook_wrapper ${theme}`}>{<Story />}</div>;
 };
 
 export default themeDecorator;

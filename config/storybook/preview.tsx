@@ -1,14 +1,13 @@
 import themeDecorator from "./decorators/themeDecorator";
-import routeDecorator from "./decorators/routeDecorator";
 import { Theme } from "app/providers/ThemeProvider";
-import i18nDecorator from "./decorators/i18nDecorator";
 
 import "../../src/app/styles/index.scss";
 
 import type { Preview } from "@storybook/react";
+import globalDecorator from "./decorators/globalDecorator";
 
 const preview: Preview = {
-  decorators: [themeDecorator(Theme.LIGHT), i18nDecorator, routeDecorator],
+  decorators: [globalDecorator],
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
@@ -33,6 +32,16 @@ export const globalTypes = {
         { value: "en", title: "English" },
       ],
       showName: true,
+    },
+  },
+  theme: {
+    description: "Global theme for components",
+    defaultValue: Theme.LIGHT,
+    toolbar: {
+      title: "Theme",
+      icon: "circlehollow",
+      items: [Theme.LIGHT, Theme.DARK],
+      dynamicTitle: true,
     },
   },
 };

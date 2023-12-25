@@ -10,7 +10,6 @@ const meta = {
   args: {
     to: "/",
   },
-  tags: ["autodocs"],
 
   argTypes: {},
 } satisfies Meta<typeof AppLink>;
@@ -27,22 +26,6 @@ export const Primary: Story = {
 };
 
 export const Secondary: Story = {
-  args: {
-    children: "Link",
-    theme: NavLinkTheme.SECONDARY,
-  },
-};
-
-export const PrimaryDark: Story = {
-  decorators: [themeDecorator(Theme.DARK)],
-  args: {
-    children: "Link",
-    theme: NavLinkTheme.PRIMARY,
-  },
-};
-
-export const SecondaryDark: Story = {
-  decorators: [themeDecorator(Theme.DARK)],
   args: {
     children: "Link",
     theme: NavLinkTheme.SECONDARY,

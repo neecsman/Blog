@@ -20,7 +20,6 @@ const LangSwitcher: React.FC<LangSwitcherProps> = ({ className }) => {
       variant={ButtonVariant.SOLID}
       size={ButtonSize.L}
       onClick={toggle}
-      square
     >
       {t("language")}
     </Button>

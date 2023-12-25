@@ -6,11 +6,6 @@ import themeDecorator from "../../../../config/storybook/decorators/themeDecorat
 const meta = {
   title: "pages/NotFound",
   component: NotFound,
-  parameters: {
-    // layout: "centered",
-  },
-
-  tags: ["autodocs"],
 
   argTypes: {},
 } satisfies Meta<typeof NotFound>;
@@ -19,10 +14,4 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Light: Story = {
-  decorators: [themeDecorator(Theme.LIGHT)],
-};
-
-export const Dark: Story = {
-  decorators: [themeDecorator(Theme.DARK)],
-};
+export const Default: Story = {};

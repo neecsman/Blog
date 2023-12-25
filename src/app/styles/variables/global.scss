@@ -11,11 +11,23 @@
 
   //Размеры
 
-  --navbar-height: 50px;
+  --navbar-height: 60px;
   --sidebar-width: 300px;
   --sidebar-width-collapsed: 80px;
 
+  --button-size-s: 16px;
   --button-size-m: 32px;
   --button-size-l: 40px;
   --button-size-xl: 48px;
+
+  //z-index
+
+  --modal-z-index: 10;
+
+  // overlay
+
+  --color-overlay: rgba(0 0 0 / 0.6);
+
+  //theme
+  --theme-transition: all 0.2s ease;
 }

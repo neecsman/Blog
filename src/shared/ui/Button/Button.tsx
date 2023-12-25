@@ -22,6 +22,7 @@ export enum ColorScheme {
 }
 
 export enum ButtonSize {
+  S = "size_s",
   M = "size_m",
   L = "size_l",
   XL = "size_xl",
@@ -32,7 +33,6 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   colorScheme?: ColorScheme;
   size?: ButtonSize;
-  square?: boolean;
   icon?: React.ReactNode;
 }
 
@@ -44,7 +44,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     colorScheme = ColorScheme.GRAY,
     size = ButtonSize.M,
     icon,
-    square,
+
     ...otherProps
   } = props;
 
@@ -53,7 +53,7 @@ const Button: React.FC<ButtonProps> = (props) => {
       {...otherProps}
       className={classNames(
         style.button,
-        { [style.square]: square, [style.icon]: icon ? true : false },
+        { [style.icon]: icon ? true : false },
         [className, style[variant], style[size], style[colorScheme]]
       )}
     >

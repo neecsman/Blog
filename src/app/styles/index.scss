@@ -4,11 +4,11 @@
 @import "themes/light.scss";
 
 .app {
-  transition: background-color 0.2s ease;
   font: var(--font-m);
   background: var(--bg-color);
   color: var(--primary-color);
   min-height: 100vh;
+  transition: background 0.2s ease;
 }
 
 .content-page {

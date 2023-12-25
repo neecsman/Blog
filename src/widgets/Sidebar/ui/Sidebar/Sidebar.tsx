@@ -40,7 +40,6 @@ const Sidebar: React.FC<SidebarProps> = ({ className, theme }) => {
         className={style.collapseBtn}
         data-testid="sidebar-toggle"
         onClick={onToggle}
-        square
         size={ButtonSize.L}
         icon={<SidebarIcon />}
       />

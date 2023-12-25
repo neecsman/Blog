@@ -1,12 +1,12 @@
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import { useTheme } from "./providers/ThemeProvider";
 import { classNames } from "helpers";
 import { AppRouter } from "./providers/router";
 import { Navbar } from "widgets/Navbar";
 import { Sidebar } from "widgets/Sidebar";
+import PageLoader from "widgets/PageLoader/ui/PageLoader";
 
 import "./styles/index.scss";
-import PageLoader from "widgets/PageLoader/ui/PageLoader";
 
 const App = () => {
   const { theme } = useTheme();
