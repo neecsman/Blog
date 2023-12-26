@@ -1,4 +1,4 @@
-import { ThemeProvider } from "app/providers/ThemeProvider";
+import { Theme, ThemeProvider } from "app/providers/ThemeProvider";
 import { StoryContext, StoryFn } from "@storybook/react";
 import { Suspense, useEffect } from "react";
 import i18n from "../i18n";
@@ -7,7 +7,7 @@ import { I18nextProvider } from "react-i18next";
 import { BrowserRouter } from "react-router-dom";
 
 const globalDecorator = (Story: StoryFn, context: StoryContext) => {
-  const { locale, theme } = context.globals;
+  const { locale, theme = Theme.LIGHT } = context.globals;
 
   useEffect(() => {
     i18n.changeLanguage(locale);

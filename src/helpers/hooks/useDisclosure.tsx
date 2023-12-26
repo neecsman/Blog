@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
+const ANIMATION_DELAY = 100;
 interface UseDisclosureResult {
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
   onToggle: () => void;
-  closeOnEsc: (event: KeyboardEvent) => void;
 }
 
 const useDisclosure = (): UseDisclosureResult => {
@@ -39,7 +39,7 @@ const useDisclosure = (): UseDisclosureResult => {
     };
   }, [closeOnEsc]);
 
-  return { isOpen, onOpen, onClose, onToggle, closeOnEsc };
+  return { isOpen, onOpen, onClose, onToggle };
 };
 
 export default useDisclosure;

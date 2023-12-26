@@ -3,13 +3,13 @@ import style from "./Modal.module.scss";
 import Button, { ButtonSize, ButtonVariant } from "../Button/Button";
 import Close from "shared/assets/icons/close.svg";
 import Portal from "../Portal/Portal";
+import { useEffect, useRef, useState } from "react";
 
 interface ModalProps {
   className?: string;
   children?: React.ReactNode;
   isOpen?: boolean;
   onClose?: () => void;
-  closeOnEsc?: (e: React.KeyboardEvent<HTMLDivElement>) => void;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -17,11 +17,9 @@ const Modal: React.FC<ModalProps> = ({
   children,
   isOpen,
   onClose,
-  closeOnEsc,
 }) => {
   const mods: Record<string, boolean> = {
     [style.opened]: isOpen,
-    [style.closed]: !isOpen,
   };
 
   return (
@@ -29,7 +27,6 @@ const Modal: React.FC<ModalProps> = ({
       <div
         role="button"
         aria-label="modal"
-        onKeyDown={closeOnEsc}
         className={classNames(style.modal, mods, [className])}
       >
         <div
@@ -42,7 +39,7 @@ const Modal: React.FC<ModalProps> = ({
             <Button
               variant={ButtonVariant.GHOST}
               icon={<Close />}
-              size={ButtonSize.M}
+              size={ButtonSize.L}
               className={style.closeBtn}
               onClick={onClose}
             />

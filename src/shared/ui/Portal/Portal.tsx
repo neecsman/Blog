@@ -3,16 +3,21 @@ import { createPortal } from "react-dom";
 
 interface PortalProps {
   children: React.ReactNode;
+  element?: HTMLElement;
 }
 
-const Portal: React.FC<PortalProps> = ({ children }) => {
-  const app = document.body.getElementsByClassName("app")[0];
+const Portal: React.FC<PortalProps> = ({ children, element }) => {
+  const app = document.getElementsByClassName("app")[0];
 
-  if (app) {
+  if (!app) {
+    return createPortal(children, document.body);
+  }
+
+  if (!element) {
     return createPortal(children, app);
   }
 
-  return createPortal(children, document.body);
+  return createPortal(children, element);
 };
 
 export default Portal;

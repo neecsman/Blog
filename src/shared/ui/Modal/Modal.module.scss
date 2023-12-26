@@ -4,7 +4,11 @@
   bottom: 0;
   right: 0;
   left: 0;
+  opacity: 0;
+
+  z-index: -1;
   pointer-events: none;
+  transition: all 0.1s ease;
 }
 
 .overlay {
@@ -20,10 +24,10 @@
   position: relative;
   max-width: 600px;
   padding: 20px;
-  border-radius: 12px;
-
+  border-radius: 6px;
   background: var(--bg-color);
   transition: var(--theme-transition);
+  transform: scale(0.5);
 }
 
 .opened {
@@ -32,15 +36,6 @@
   opacity: 1;
   .content {
     transform: scale(1);
-  }
-}
-
-.closed {
-  pointer-events: none;
-  opacity: 0;
-  z-index: -1;
-  .content {
-    transform: scale(0.2);
   }
 }
 
