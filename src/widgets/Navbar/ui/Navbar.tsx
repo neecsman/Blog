@@ -10,6 +10,8 @@ import {
 } from "shared/ui/Button/Button";
 import Modal from "shared/ui/Modal/Modal";
 import { useDisclosure } from "helpers/hooks";
+import { LoginModal } from "features/AuthByUsername";
+import { useTranslation } from "react-i18next";
 
 interface NavbarProps {
   className?: string;
@@ -17,6 +19,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ className }) => {
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const { t } = useTranslation("auth");
   return (
     <div className={classNames(style.navbar)}>
       <div className={style.btn_group}>
@@ -25,14 +28,9 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
           variant={ButtonVariant.SOLID}
           colorScheme={ColorScheme.BLUE}
         >
-          Войти
+          {t("Sign in")}
         </Button>
-        <Modal isOpen={isOpen} onClose={onClose}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
-          repudiandae iure vitae maxime blanditiis dicta, velit maiores sit
-          cupiditate nisi quisquam eveniet! Voluptate necessitatibus impedit
-          esse. Itaque saepe cum illum?
-        </Modal>
+        <LoginModal isOpen={isOpen} onClose={onClose} />
       </div>
     </div>
   );

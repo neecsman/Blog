@@ -36,14 +36,16 @@ const Modal: React.FC<ModalProps> = ({
           onClick={onClose}
         >
           <div className={style.content} onClick={(e) => e.stopPropagation()}>
-            <Button
-              variant={ButtonVariant.GHOST}
-              icon={<Close />}
-              size={ButtonSize.L}
-              className={style.closeBtn}
-              onClick={onClose}
-            />
-            {children}
+            <div className={style.header}>
+              <Button
+                variant={ButtonVariant.GHOST}
+                icon={<Close />}
+                size={ButtonSize.L}
+                className={style.closeBtn}
+                onClick={onClose}
+              />
+            </div>
+            <div className={style.body}>{children}</div>
           </div>
         </div>
       </div>

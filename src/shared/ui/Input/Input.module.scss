@@ -1,0 +1,12 @@
+.Input {
+  input {
+    width: 100%;
+    padding: 5px 10px;
+    outline: none;
+
+    border-radius: var(--border-radius-m);
+    border: solid 1px var(--color-gray);
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+  }
+}

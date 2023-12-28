@@ -1,9 +1,9 @@
-import { Counter } from "entities/Counter";
+import Input from "shared/ui/Input/Input";
 
 const Main = () => {
   return (
     <div>
-      <Counter />
+      <Input />
     </div>
   );
 };

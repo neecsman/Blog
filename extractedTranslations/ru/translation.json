@@ -3,6 +3,13 @@
   "Page error": "Page error",
   "Page not found": "Page not found",
   "Reload page": "Reload page",
+  "Sigh In": "Sigh In",
+  "Sign In": "Sign In",
+  "Sign in": "Sign in",
+  "SignIn": "SignIn",
+  "auth": {
+    "Sign in": "Sign in"
+  },
   "language": "language",
   "route": {
     "about": "about",
