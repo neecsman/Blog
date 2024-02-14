@@ -18,38 +18,64 @@ const Modal: React.FC<ModalProps> = ({
   isOpen,
   onClose,
 }) => {
+  const [isOpening, setIsOpening] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  let timer: ReturnType<typeof setTimeout>;
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsMounted(true);
+      timer = setTimeout(() => {
+        setIsOpening(true);
+      }, 100);
+    } else {
+      setIsOpening(false);
+      timer = setTimeout(() => {
+        setIsMounted(false);
+      }, 100);
+    }
+    return () => clearTimeout(timer);
+  }, [isOpen]);
+
   const mods: Record<string, boolean> = {
-    [style.opened]: isOpen,
+    [style.isOpening]: isOpening,
   };
 
   return (
-    <Portal>
-      <div
-        role="button"
-        aria-label="modal"
-        className={classNames(style.modal, mods, [className])}
-      >
-        <div
-          className={style.overlay}
-          role="button"
-          aria-label="overlay"
-          onClick={onClose}
-        >
-          <div className={style.content} onClick={(e) => e.stopPropagation()}>
-            <div className={style.header}>
-              <Button
-                variant={ButtonVariant.GHOST}
-                icon={<Close />}
-                size={ButtonSize.L}
-                className={style.closeBtn}
-                onClick={onClose}
-              />
+    <>
+      {isMounted && (
+        <Portal>
+          <div
+            role="button"
+            aria-label="modal"
+            className={classNames(style.modal, mods, [className])}
+          >
+            <div
+              className={style.overlay}
+              role="button"
+              aria-label="overlay"
+              onClick={onClose}
+            >
+              <div
+                className={style.content}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className={style.header}>
+                  <Button
+                    variant={ButtonVariant.GHOST}
+                    icon={<Close />}
+                    size={ButtonSize.L}
+                    className={style.closeBtn}
+                    onClick={onClose}
+                  />
+                </div>
+                <div className={style.body}>{children}</div>
+              </div>
             </div>
-            <div className={style.body}>{children}</div>
           </div>
-        </div>
-      </div>
-    </Portal>
+        </Portal>
+      )}
+    </>
   );
 };
 

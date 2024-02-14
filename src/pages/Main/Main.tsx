@@ -1,11 +1,7 @@
 import Input from "shared/ui/Input/Input";
 
 const Main = () => {
-  return (
-    <div>
-      <Input />
-    </div>
-  );
+  return <div></div>;
 };
 
 export default Main;

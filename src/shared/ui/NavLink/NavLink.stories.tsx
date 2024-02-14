@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import AppLink, { NavLinkTheme } from "./NavLink";
-import { Theme } from "app/providers/ThemeProvider";
-import themeDecorator from "../../../../config/storybook/decorators/themeDecorator";
 
 const meta = {
   title: "shared/NavLink",

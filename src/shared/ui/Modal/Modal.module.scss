@@ -5,7 +5,6 @@
   right: 0;
   left: 0;
   opacity: 0;
-
   z-index: -1;
   pointer-events: none;
   transition: all 0.1s ease;
@@ -34,7 +33,7 @@
   }
 }
 
-.opened {
+.isOpening {
   pointer-events: auto;
   z-index: var(--modal-z-index);
   opacity: 1;
