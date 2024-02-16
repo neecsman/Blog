@@ -11,7 +11,7 @@ interface LoginModalProps {
   onClose: () => void;
 }
 
-const LoginModal: React.FC<LoginModalProps> = ({
+export const LoginModal: React.FC<LoginModalProps> = ({
   className,
   isOpen,
   onClose,
@@ -26,4 +26,3 @@ const LoginModal: React.FC<LoginModalProps> = ({
     </Modal>
   );
 };
-export default LoginModal;
