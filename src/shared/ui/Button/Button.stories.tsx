@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Button, { ButtonSize, ButtonVariant } from "./Button";
-import { Theme } from "app/providers/ThemeProvider";
-import themeDecorator from "../../../../config/storybook/decorators/themeDecorator";
 
 import Collapse from "shared/assets/icons/hamburger-sidebar.svg";
 
