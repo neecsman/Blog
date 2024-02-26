@@ -1,33 +1,38 @@
 import { classNames } from "helpers";
-import style from "./NavLink.module.scss";
-import { NavLink as Link, LinkProps } from "react-router-dom";
+import { NavLink, LinkProps } from "react-router-dom";
 
-export enum NavLinkTheme {
+import style from "./SidebarItem.module.scss";
+import { useTranslation } from "react-i18next";
+import { memo } from "react";
+
+export enum SidebarItemTheme {
   PRIMARY = "primary",
   SECONDARY = "secondary",
 }
 
 interface NavLinkProps extends LinkProps {
   className?: string;
-  children: React.ReactNode;
-  theme?: NavLinkTheme;
+  children: string;
+  theme?: SidebarItemTheme;
   icon?: React.ReactNode;
   collapsed?: boolean;
 }
 
-const NavLink: React.FC<NavLinkProps> = (props) => {
+const SidebarItem = memo((props: NavLinkProps) => {
   const {
     className,
     children,
-    theme = NavLinkTheme.PRIMARY,
+    theme = SidebarItemTheme.PRIMARY,
     icon,
     collapsed,
     to,
     ...otherProps
   } = props;
 
+  const { t } = useTranslation();
+
   return (
-    <Link
+    <NavLink
       to={to}
       className={({ isActive }) =>
         classNames(
@@ -39,9 +44,9 @@ const NavLink: React.FC<NavLinkProps> = (props) => {
       {...otherProps}
     >
       <div className={style.icon}>{icon}</div>
-      {!collapsed && children}
-    </Link>
+      {!collapsed && t(children)}
+    </NavLink>
   );
-};
+});
 
-export default NavLink;
+export default SidebarItem;

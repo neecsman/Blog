@@ -6,7 +6,7 @@ import { StateSchema, StoreProvider } from "app/providers/StoreProvider";
 
 export interface ComponentRenderOptions {
   route?: string;
-  initialState?: StateSchema;
+  initialState?: Partial<StateSchema>;
 }
 
 const componentRender = (

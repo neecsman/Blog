@@ -2,6 +2,7 @@
   "language": "RU",
   "route": {
     "main": "Главная",
-    "about": "О нас"
+    "about": "О нас",
+    "profile": "Профиль"
   }
 }

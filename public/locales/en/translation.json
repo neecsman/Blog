@@ -2,6 +2,7 @@
   "language": "EN",
   "route": {
     "main": "Main",
-    "about": "About"
+    "about": "About",
+    "profile": "Profile"
   }
 }

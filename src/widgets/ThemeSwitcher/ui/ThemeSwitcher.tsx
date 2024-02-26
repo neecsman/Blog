@@ -6,12 +6,13 @@ import DarkIcon from "shared/assets/icons/theme-dark.svg";
 
 import style from "./ThemeSwitcher.module.scss";
 import Button, { ButtonSize, ButtonVariant } from "shared/ui/Button/Button";
+import { memo } from "react";
 
 interface ThemeSwitcherProps {
   className?: string;
 }
 
-const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ className }) => {
+const ThemeSwitcher: React.FC<ThemeSwitcherProps> = memo(({ className }) => {
   const { theme, toggleTheme } = useTheme();
   return (
     <Button
@@ -22,6 +23,6 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ className }) => {
       size={ButtonSize.L}
     />
   );
-};
+});
 
 export default ThemeSwitcher;

@@ -1,19 +1,17 @@
 import { classNames } from "helpers";
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Button } from "shared/ui";
 import { ThemeSwithcer } from "widgets/ThemeSwitcher";
 import { LangSwitcher } from "widgets/LangSwitcher";
 import { Theme } from "app/providers/ThemeProvider";
-import { Button } from "shared/ui";
 import { ButtonSize, ButtonVariant } from "shared/ui/Button/Button";
 import SidebarIcon from "shared/assets/icons/hamburger-sidebar.svg";
-import { useTranslation } from "react-i18next";
-import NavLink from "shared/ui/NavLink/NavLink";
-import { RouterPath } from "shared/config/routeConfig/routerConfig";
 
-import HomeIcon from "shared/assets/icons/home.svg";
-import AboutIcon from "shared/assets/icons/info.svg";
+import SidebarItem from "../SidebarItem/SidebarItem";
 
 import style from "./Sidebar.module.scss";
+import { SidebarItemsList } from "widgets/Sidebar/model/types/SidebarItemType";
 
 interface SidebarProps {
   className?: string;
@@ -21,12 +19,10 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ className, theme }) => {
-  const { t } = useTranslation();
   const [collapsed, setCollapsed] = useState(false);
-
-  const onToggle = () => {
+  const onToggle = useCallback(() => {
     setCollapsed((prev) => !prev);
-  };
+  }, []);
   return (
     <div
       data-testid="sidebar"
@@ -43,17 +39,18 @@ const Sidebar: React.FC<SidebarProps> = ({ className, theme }) => {
         size={ButtonSize.L}
         icon={<SidebarIcon />}
       />
+
       <div className={style.menu}>
-        <NavLink icon={<HomeIcon />} to={RouterPath.main} collapsed={collapsed}>
-          {t("route.main")}
-        </NavLink>
-        <NavLink
-          icon={<AboutIcon />}
-          to={RouterPath.about}
-          collapsed={collapsed}
-        >
-          {t("route.about")}
-        </NavLink>
+        {SidebarItemsList.map(({ Icon, text, path }) => (
+          <SidebarItem
+            key={path}
+            icon={<Icon />}
+            to={path}
+            collapsed={collapsed}
+          >
+            {text}
+          </SidebarItem>
+        ))}
       </div>
       <div className={style.switcher}>
         <ThemeSwithcer />

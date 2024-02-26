@@ -4,9 +4,14 @@ import { conuterReducer } from "entities/Counter";
 import { userReducer } from "entities/User";
 import { loginReducer } from "features/AuthByUsername/model/slice/loginSlice";
 import { createReducerManager } from "./reducerManager";
+import { useDispatch } from "react-redux";
 
-export default function createReduxStore(initialState?: StateSchema) {
+export default function createReduxStore(
+  initialState?: StateSchema,
+  asyncReducers?: Partial<ReducersMapObject<StateSchema>>
+) {
   const rootReducers: ReducersMapObject<StateSchema> = {
+    ...asyncReducers,
     counter: conuterReducer,
     user: userReducer,
   };
@@ -20,6 +25,8 @@ export default function createReduxStore(initialState?: StateSchema) {
   });
   // @ts-ignore
   store.reducerManager = reducerManager;
-
   return store;
 }
+
+export type AppDispatch = ReturnType<typeof createReduxStore>["dispatch"];
+export const useAppDispatch: () => AppDispatch = useDispatch;

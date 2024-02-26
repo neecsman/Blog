@@ -30,3 +30,11 @@ export const ButtonIcon: Story = {
     size: ButtonSize.L,
   },
 };
+
+export const ButtonIsLoading: Story = {
+  args: {
+    children: "Button",
+    variant: ButtonVariant.SOLID,
+    isLoading: true,
+  },
+};

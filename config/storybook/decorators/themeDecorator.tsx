@@ -1,4 +1,3 @@
-import { Theme, ThemeProvider, useTheme } from "app/providers/ThemeProvider";
 import { StoryContext, StoryFn } from "@storybook/react";
 
 const themeDecorator = (Story: StoryFn, context: StoryContext) => {

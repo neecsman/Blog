@@ -1,33 +1,37 @@
-import React, { memo, useCallback, useEffect } from "react";
-import { useDispatch, useSelector, useStore } from "react-redux";
+import React, { memo, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
-import { Button, Input } from "shared/ui";
+import { Button, Input, Text } from "shared/ui";
 
 import { loginActions, loginReducer } from "../..//model/slice/loginSlice";
-import { loginByUsername } from "features/AuthByUsername/model/services";
-import { useAppDispatch } from "helpers/hooks/useAppDispatch";
-import { ReduxStoreWithManager } from "app/providers/StoreProvider";
+import { loginByUsername } from "features/AuthByUsername/model/services/loginByUsername/loginByUsername";
+import { useAppDispatch } from "app/providers/StoreProvider/config/store";
 
 import { classNames } from "helpers";
 
 import style from "./LoginForm.module.scss";
-import { getLoginStateUsername } from "../../model/selectors/getLoginStateUsername";
-import { getLoginStatePassword } from "../../model/selectors/getLoginStatePassword";
-import { getLoginStateError } from "../../model/selectors/getLoginStateError";
-import { getLoginStateIsLoading } from "../../model/selectors/getLoginStateIsLoading";
+import {
+  getLoginStateError,
+  getLoginStateIsLoading,
+  getLoginStateUsername,
+  getLoginStatePassword,
+} from "features/AuthByUsername/model/selectors";
+
 import DynamicModuleLoader, {
   ReducersList,
 } from "shared/lib/components/DynamicModuleLoadert";
+import { ColorScheme } from "shared/ui/Button/Button";
 interface LoginFormProps {
   className?: string;
+  onSuccess?: () => void;
 }
 
 const initialReducers: ReducersList = {
   loginForm: loginReducer,
 };
 
-const LoginForm: React.FC<LoginFormProps> = memo(({ className }) => {
+const LoginForm: React.FC<LoginFormProps> = memo(({ className, onSuccess }) => {
   const { t } = useTranslation("auth");
   const dispatch = useDispatch();
   const appDispatch = useAppDispatch();
@@ -53,8 +57,11 @@ const LoginForm: React.FC<LoginFormProps> = memo(({ className }) => {
     [dispatch]
   );
 
-  const onLoginClick = useCallback(() => {
-    appDispatch(loginByUsername({ username, password }));
+  const onLoginClick = useCallback(async () => {
+    const result = await appDispatch(loginByUsername({ username, password }));
+    if (result.meta.requestStatus === "rejected") {
+      onSuccess();
+    }
   }, [dispatch, password, username]);
 
   return (
@@ -67,8 +74,14 @@ const LoginForm: React.FC<LoginFormProps> = memo(({ className }) => {
           value={username}
         />
         <Input type="password" onChange={onChangePassword} value={password} />
-        {error && <span>{error}</span>}
-        <Button onClick={onLoginClick}>{t("Sign in")}</Button>
+        {error && <Text>{error}</Text>}
+        <Button
+          colorScheme={ColorScheme.BLUE}
+          onClick={onLoginClick}
+          isLoading={isLoading}
+        >
+          {t("Sign in")}
+        </Button>
       </div>
     </DynamicModuleLoader>
   );

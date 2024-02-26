@@ -1,5 +1,5 @@
 import { classNames } from "helpers";
-import React, { ButtonHTMLAttributes } from "react";
+import React, { ButtonHTMLAttributes, memo } from "react";
 
 import style from "./Button.module.scss";
 
@@ -32,25 +32,27 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   variant?: ButtonVariant;
   colorScheme?: ColorScheme;
+  isLoading?: boolean;
   size?: ButtonSize;
   icon?: React.ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = (props) => {
+const Button = memo((props: ButtonProps) => {
   const {
     className,
     children,
     variant = ButtonVariant.SOLID,
     colorScheme = ColorScheme.GRAY,
     size = ButtonSize.M,
+    isLoading,
     icon,
-
     ...otherProps
   } = props;
 
   return (
     <button
       {...otherProps}
+      disabled={isLoading}
       className={classNames(
         style.button,
         { [style.icon]: icon ? true : false },
@@ -61,6 +63,6 @@ const Button: React.FC<ButtonProps> = (props) => {
       {children}
     </button>
   );
-};
+});
 
 export default Button;

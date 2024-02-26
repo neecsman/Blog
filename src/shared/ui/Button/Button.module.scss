@@ -4,6 +4,9 @@
   color: var(--primary-color);
   padding: 5px 10px;
   transition: all 0.1s ease;
+  &:disabled {
+    opacity: 0.5;
+  }
 }
 
 .icon {
@@ -70,6 +73,7 @@
 }
 .blue {
   background: var(--color-blue);
+  color: var(--color-white);
   &:hover {
     background: var(--color-blue-lighten);
   }

@@ -1,4 +1,3 @@
-import themeDecorator from "./decorators/themeDecorator";
 import { Theme } from "app/providers/ThemeProvider";
 
 import "../../src/app/styles/index.scss";

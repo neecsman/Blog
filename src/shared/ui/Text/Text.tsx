@@ -1,7 +1,13 @@
 import { classNames } from "helpers";
 import style from "./Text.module.scss";
 
-interface TextProps {
+export enum TextVariant {
+  ERROR = "error",
+  HEADING = "heading",
+  BASE = "base",
+}
+
+export interface TextProps {
   className?: string;
   children: string;
 }
