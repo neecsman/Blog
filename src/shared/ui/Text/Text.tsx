@@ -9,10 +9,15 @@ export enum TextVariant {
 
 export interface TextProps {
   className?: string;
+  variant?: TextVariant;
   children: string;
 }
 
-const Text: React.FC<TextProps> = ({ className, children }) => {
-  return <p className={classNames(style.Text, {}, [className])}>{children}</p>;
+const Text: React.FC<TextProps> = ({ className, children, variant }) => {
+  return (
+    <p className={classNames(style.Text, {}, [className, variant])}>
+      {children}
+    </p>
+  );
 };
 export default Text;

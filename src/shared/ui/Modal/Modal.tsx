@@ -3,7 +3,7 @@ import style from "./Modal.module.scss";
 import Button, { ButtonSize, ButtonVariant } from "../Button/Button";
 import Close from "shared/assets/icons/close.svg";
 import Portal from "../Portal/Portal";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface ModalProps {
   className?: string;

@@ -1,6 +1,3 @@
-import { useTranslation } from "react-i18next";
-import { classNames } from "helpers";
-import style from "./index.module.scss";
 import { useEffect } from "react";
 import { useDispatch, useStore } from "react-redux";
 import { ReduxStoreWithManager } from "app/providers/StoreProvider";
@@ -25,20 +22,18 @@ const DynamicModuleLoader: React.FC<DynamicModuleLoaderProps> = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    Object.entries(reducers).forEach(([name, reducer]: ReducersListEntry) => {
-      store.reducerManager.add(name, reducer);
+    Object.entries(reducers).forEach(([name, reducer]) => {
+      store.reducerManager.add(name as StateSchemaKey, reducer);
       name;
       dispatch({ type: `@INIT ${name} reducer` });
     });
 
     return () => {
       if (removeAfterUnmount) {
-        Object.entries(reducers).forEach(
-          ([name, reducer]: ReducersListEntry) => {
-            store.reducerManager.remove(name);
-            dispatch({ type: `@DESTROY ${name} reducer` });
-          }
-        );
+        Object.entries(reducers).forEach(([name, reducer]) => {
+          store.reducerManager.remove(name as StateSchemaKey);
+          dispatch({ type: `@DESTROY ${name} reducer` });
+        });
       }
     };
   }, []);

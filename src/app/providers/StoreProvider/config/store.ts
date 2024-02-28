@@ -1,27 +1,34 @@
 import { ReducersMapObject, configureStore } from "@reduxjs/toolkit";
-import { StateSchema } from "./StateSchema";
-import { conuterReducer } from "entities/Counter";
+import { StateSchema, ThunkExtraArg } from "./StateSchema";
 import { userReducer } from "entities/User";
-import { loginReducer } from "features/AuthByUsername/model/slice/loginSlice";
 import { createReducerManager } from "./reducerManager";
 import { useDispatch } from "react-redux";
+import { api } from "shared/api/api";
+import { NavigateOptions, To } from "react-router-dom";
 
 export default function createReduxStore(
   initialState?: StateSchema,
-  asyncReducers?: Partial<ReducersMapObject<StateSchema>>
+  asyncReducers?: Partial<ReducersMapObject<StateSchema>>,
+  navigate?: (to: To, options?: NavigateOptions) => void
 ) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
-    counter: conuterReducer,
     user: userReducer,
   };
 
   const reducerManager = createReducerManager(rootReducers);
 
-  const store = configureStore<StateSchema>({
-    reducer: reducerManager.reduce,
+  const extraArg: ThunkExtraArg = {
+    api,
+    navigate,
+  };
+
+  const store = configureStore({
+    reducer: reducerManager.reduce as unknown as ReducersMapObject<StateSchema>,
     devTools: __IS_DEV__,
     preloadedState: initialState,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({ thunk: { extraArgument: extraArg } }),
   });
   // @ts-ignore
   store.reducerManager = reducerManager;

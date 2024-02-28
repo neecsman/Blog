@@ -1,5 +1,5 @@
 import React, { memo, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
 import { Button, Input, Text } from "shared/ui";
@@ -24,7 +24,7 @@ import DynamicModuleLoader, {
 import { ColorScheme } from "shared/ui/Button/Button";
 interface LoginFormProps {
   className?: string;
-  onSuccess?: () => void;
+  onSuccess: () => void;
 }
 
 const initialReducers: ReducersList = {
@@ -33,7 +33,6 @@ const initialReducers: ReducersList = {
 
 const LoginForm: React.FC<LoginFormProps> = memo(({ className, onSuccess }) => {
   const { t } = useTranslation("auth");
-  const dispatch = useDispatch();
   const appDispatch = useAppDispatch();
 
   const username = useSelector(getLoginStateUsername);
@@ -44,25 +43,26 @@ const LoginForm: React.FC<LoginFormProps> = memo(({ className, onSuccess }) => {
   const onChangeUsername = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const value = event.target.value;
-      dispatch(loginActions.setUsername(value));
+      appDispatch(loginActions.setUsername(value));
     },
-    [dispatch]
+    [appDispatch]
   );
 
   const onChangePassword = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const value = event.target.value;
-      dispatch(loginActions.setPassword(value));
+      appDispatch(loginActions.setPassword(value));
     },
-    [dispatch]
+    [appDispatch]
   );
 
   const onLoginClick = useCallback(async () => {
     const result = await appDispatch(loginByUsername({ username, password }));
-    if (result.meta.requestStatus === "rejected") {
+
+    if (result.meta.requestStatus === "fulfilled") {
       onSuccess();
     }
-  }, [dispatch, password, username]);
+  }, [appDispatch, password, username]);
 
   return (
     <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>

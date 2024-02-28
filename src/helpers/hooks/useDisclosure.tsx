@@ -1,6 +1,4 @@
 import { useCallback, useEffect, useState } from "react";
-
-const ANIMATION_DELAY = 100;
 interface UseDisclosureResult {
   isOpen: boolean;
   onOpen: () => void;
