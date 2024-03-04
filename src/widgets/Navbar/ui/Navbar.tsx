@@ -1,17 +1,14 @@
-import { classNames } from "helpers";
 import React from "react";
+import { classNames } from "helpers";
+
+import { Button } from "shared/ui";
+import { ButtonVariant, ColorScheme } from "shared/ui/Button/Button";
+
+import { useDisclosure } from "helpers/hooks";
+import { LoginModal } from "features/Auth/AuthByUsername";
+import { useTranslation } from "react-i18next";
 
 import style from "./Navbar.module.scss";
-import { Button } from "shared/ui";
-import {
-  ButtonSize,
-  ButtonVariant,
-  ColorScheme,
-} from "shared/ui/Button/Button";
-import Modal from "shared/ui/Modal/Modal";
-import { useDisclosure } from "helpers/hooks";
-import { LoginModal } from "features/AuthByUsername";
-import { useTranslation } from "react-i18next";
 
 interface NavbarProps {
   className?: string;

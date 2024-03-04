@@ -7,7 +7,7 @@ import { I18nextProvider } from "react-i18next";
 import { BrowserRouter } from "react-router-dom";
 import { StoreProvider } from "app/providers/StoreProvider";
 
-import { loginReducer } from "features/AuthByUsername/model/slice/loginSlice";
+import { loginReducer } from "features/Auth/AuthByUsername/model/slice/loginSlice";
 import { ReducersList } from "shared/lib/components/DynamicModuleLoadert";
 import { profileReducer } from "entities/Profile";
 

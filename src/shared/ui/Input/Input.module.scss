@@ -1,12 +1,21 @@
 .Input {
   input {
     width: 100%;
+    min-width: 200px;
     padding: 5px 10px;
     outline: none;
-
-    border-radius: var(--border-radius-m);
+    border-radius: var(--rounded-xs);
     border: solid 1px var(--color-gray);
     background-color: var(--bg-color);
     color: var(--primary-color);
+  }
+
+  input:focus {
+    outline: 1px solid var(--color-blue);
+  }
+
+  label {
+    font-weight: 300;
+    opacity: 0.6;
   }
 }

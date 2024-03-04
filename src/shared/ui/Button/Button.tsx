@@ -10,6 +10,7 @@ export enum ButtonVariant {
 }
 
 export enum ColorScheme {
+  WHITE = "white",
   GRAY = "gray",
   RED = "red",
   YELLOW = "yellow",
@@ -32,6 +33,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   variant?: ButtonVariant;
   colorScheme?: ColorScheme;
+  isDisabled?: boolean;
   isLoading?: boolean;
   size?: ButtonSize;
   icon?: React.ReactNode;
@@ -44,6 +46,7 @@ const Button = memo((props: ButtonProps) => {
     variant = ButtonVariant.SOLID,
     colorScheme = ColorScheme.GRAY,
     size = ButtonSize.M,
+    isDisabled,
     isLoading,
     icon,
     ...otherProps
@@ -52,7 +55,7 @@ const Button = memo((props: ButtonProps) => {
   return (
     <button
       {...otherProps}
-      disabled={isLoading}
+      disabled={isLoading || isDisabled}
       className={classNames(
         style.button,
         { [style.icon]: icon ? true : false },

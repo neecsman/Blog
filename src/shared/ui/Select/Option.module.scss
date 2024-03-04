@@ -1,0 +1,19 @@
+.option {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 30px;
+  padding: 5px;
+  border: 1px;
+  cursor: pointer;
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+}
+
+.option:hover {
+  background-color: var(--inverted-bg-color);
+}
+
+.option[aria-selected="true"] {
+  background-color: rgba(0, 0, 0, 0.05);
+}

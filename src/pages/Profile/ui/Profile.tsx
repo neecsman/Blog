@@ -10,6 +10,7 @@ import { fetchProfileData, profileReducer } from "entities/Profile";
 import { useAppDispatch } from "app/providers/StoreProvider/config/store";
 
 import style from "./Profile.module.scss";
+import ProfileCard from "entities/Profile/ui/ProfileCard/ProfileCard";
 
 const reducers: ReducersList = {
   profile: profileReducer,
@@ -30,7 +31,7 @@ const Profile: React.FC<ProfileProps> = ({ className }) => {
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <div className={classNames(style.Profile, {}, [className])}>
-        PROFLIE PAGE
+        <ProfileCard />
       </div>
     </DynamicModuleLoader>
   );

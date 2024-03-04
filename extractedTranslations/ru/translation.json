@@ -11,6 +11,9 @@
     "Sign in": "Sign in"
   },
   "language": "language",
+  "profile": {
+    "title": "title"
+  },
   "route": {
     "about": "about",
     "main": "main"

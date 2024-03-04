@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Button, Input, Text } from "shared/ui";
 
 import { loginActions, loginReducer } from "../..//model/slice/loginSlice";
-import { loginByUsername } from "features/AuthByUsername/model/services/loginByUsername/loginByUsername";
+import { loginByUsername } from "features/Auth/AuthByUsername/model/services/loginByUsername/loginByUsername";
 import { useAppDispatch } from "app/providers/StoreProvider/config/store";
 
 import { classNames } from "helpers";
@@ -16,7 +16,7 @@ import {
   getLoginStateIsLoading,
   getLoginStateUsername,
   getLoginStatePassword,
-} from "features/AuthByUsername/model/selectors";
+} from "features/Auth/AuthByUsername/model/selectors";
 
 import DynamicModuleLoader, {
   ReducersList,
