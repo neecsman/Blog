@@ -4,6 +4,7 @@ label {
 }
 
 .Select_wrapper {
+  flex: 1;
   width: 100%;
   position: relative;
   border-radius: 12px;
@@ -35,7 +36,6 @@ label {
   height: 24px;
   right: 6px;
   top: 50%;
-  transition: transform 0.2s ease-in-out, margin-top 0.2s ease-in-out;
   margin-top: -12px;
 }
 
@@ -48,6 +48,7 @@ label {
   box-sizing: border-box;
   z-index: 10;
   background-color: var(--bg-color);
+  overflow: hidden;
   outline: 1px solid var(--color-gray);
   border-bottom-left-radius: var(--rounded-xs);
   border-bottom-right-radius: var(--rounded-xs);

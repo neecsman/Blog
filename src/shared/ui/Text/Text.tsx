@@ -1,5 +1,6 @@
 import { classNames } from "helpers";
 import style from "./Text.module.scss";
+import { memo } from "react";
 
 export enum TextVariant {
   ERROR = "error",
@@ -25,22 +26,19 @@ export interface TextProps {
   children: string;
 }
 
-const Text: React.FC<TextProps> = ({
-  className,
-  children,
-  variant = TextVariant.BASE,
-  size = TextSize.MD,
-}) => {
-  return (
-    <p
-      className={classNames(style.Text, {}, [
-        className,
-        style[variant],
-        style[size],
-      ])}
-    >
-      {children}
-    </p>
-  );
-};
+const Text: React.FC<TextProps> = memo(
+  ({ className, children, variant = TextVariant.BASE, size = TextSize.MD }) => {
+    return (
+      <p
+        className={classNames(style.Text, {}, [
+          className,
+          style[variant],
+          style[size],
+        ])}
+      >
+        {children}
+      </p>
+    );
+  }
+);
 export default Text;

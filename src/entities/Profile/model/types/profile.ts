@@ -1,10 +1,17 @@
 import { Country, Currency } from "shared/const/common";
 
+export type Birthday = {
+  day: string;
+  month: string;
+  year: string;
+};
+
 export interface Profile {
   username: string;
   firstname: string;
   lastname: string;
-  age: number;
+  gender: "male" | "female";
+  birthday: Birthday;
   currency: Currency;
   country: Country;
   city: string;

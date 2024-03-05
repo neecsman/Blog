@@ -13,7 +13,11 @@ const initialState: ProfileSchema = {
 export const profileSlice = createSlice({
   name: "profile",
   initialState,
-  reducers: {},
+  reducers: {
+    updateProfile: (state, action) => {
+      state.data = { ...state.data, ...action.payload };
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProfileData.pending, (state) => {
@@ -23,6 +27,7 @@ export const profileSlice = createSlice({
       .addCase(
         fetchProfileData.fulfilled,
         (state, action: PayloadAction<Profile>) => {
+          state.isLoading = false;
           state.data = action.payload;
         }
       )

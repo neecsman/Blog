@@ -3,6 +3,19 @@
 @import "themes/dark.scss";
 @import "themes/light.scss";
 
+::-webkit-scrollbar {
+  width: 8px; /* ширина scrollbar */
+}
+::-webkit-scrollbar-track {
+  // background: var(--inverted-bg-color); /* цвет дорожки */
+  background: transparent; /* цвет дорожки */
+  border-radius: var(--rounded-xl);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-gray); /* цвет плашки */
+  border-radius: 20px; /* закругления плашки */
+}
+
 .app {
   font: var(--font-m);
   background: var(--bg-color);
@@ -17,6 +30,8 @@
 
 .page-wrapper {
   flex-grow: 1;
+  display: flex;
+  justify-content: center;
   padding: 20px;
 }
 

@@ -1,5 +1,6 @@
 import {
   MouseEventHandler,
+  memo,
   useCallback,
   useEffect,
   useRef,
@@ -17,20 +18,22 @@ import Option from "./Option";
 type SelectProps = {
   className?: string;
   label?: string;
-  value?: OptionType;
+  value?: string;
+  defaultValue?: string;
   options?: OptionType[];
   placeholder?: string;
   onChange?: (value: OptionType) => void;
   onClose?: () => void;
 };
 
-const Select: React.FC<SelectProps> = (props) => {
+const Select: React.FC<SelectProps> = memo((props) => {
   const {
     className,
     options,
     label,
     value,
     placeholder = "Placeholder",
+    defaultValue,
     onChange,
     onClose,
   } = props;
@@ -39,35 +42,41 @@ const Select: React.FC<SelectProps> = (props) => {
   const rootRef = useRef<HTMLDivElement>(null);
   const selectRef = useRef<HTMLDivElement>(null);
 
-  const handleMouseClick = useCallback((event: MouseEvent) => {
+  const handleOutsideClick = (event: MouseEvent) => {
     const { target } = event;
     if (target instanceof Node && !rootRef.current?.contains(target)) {
       isOpen && onClose?.();
       setIsOpen(false);
     }
-  }, []);
+  };
 
-  const handleKeydown = useCallback((event: KeyboardEvent) => {
+  const handleKeydown = (event: KeyboardEvent) => {
     if (event.key === "Enter") {
       setIsOpen((prev) => !prev);
     }
-  }, []);
+  };
 
-  const handleSelectClick: MouseEventHandler<HTMLDivElement> =
-    useCallback(() => {
-      setIsOpen((prev) => !prev);
-    }, []);
+  const handleSelectClick: MouseEventHandler<HTMLDivElement> = () =>
+    setIsOpen((prev) => !prev);
 
-  const handleOptionClick = useCallback((value: OptionType) => {
+  const handleOptionClick = (value: OptionType) => {
     setIsOpen(false);
     onChange?.(value);
+  };
+
+  useEffect(() => {
+    const selected = options?.filter((item) => item.value === defaultValue);
+    if (!selected) {
+      return;
+    }
+    onChange?.(selected[0]);
   }, []);
 
   useEffect(() => {
-    window.addEventListener("click", handleMouseClick);
+    window.addEventListener("click", handleOutsideClick);
 
     return () => {
-      window.removeEventListener("click", handleMouseClick);
+      window.removeEventListener("click", handleOutsideClick);
     };
   }, []);
 
@@ -85,14 +94,16 @@ const Select: React.FC<SelectProps> = (props) => {
   return (
     <div
       ref={rootRef}
-      className={classNames(style.Select_wrapper, { [style.opened]: isOpen }, [
-        className,
-      ])}
+      className={classNames(
+        style.Select_wrapper,
+        { [style.opened]: isOpen, [style.closed]: !isOpen },
+        [className]
+      )}
     >
       {label && <label>{label}</label>}
       <div
         className={style.select}
-        data-selected={!!value?.value}
+        data-selected={!!value}
         onClick={handleSelectClick}
         role="button"
         tabIndex={0}
@@ -101,7 +112,7 @@ const Select: React.FC<SelectProps> = (props) => {
         <div className={style.arrow}>
           <ArrowDrop fill={"gray"} />
         </div>
-        {value?.title || placeholder}
+        {value || defaultValue || placeholder}
       </div>
       {isOpen && (
         <ul className={style.option_list}>
@@ -110,6 +121,7 @@ const Select: React.FC<SelectProps> = (props) => {
               <Option
                 key={option.value}
                 option={option}
+                isSelected={value === option.value}
                 onClick={handleOptionClick}
               />
             ))}
@@ -117,5 +129,6 @@ const Select: React.FC<SelectProps> = (props) => {
       )}
     </div>
   );
-};
+});
+
 export default Select;
