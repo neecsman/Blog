@@ -1,4 +1,4 @@
-import { MouseEventHandler, useEffect, useRef } from "react";
+import { MouseEventHandler, memo, useEffect, useRef } from "react";
 import CheckedIcon from "../../assets/icons/check.svg";
 import style from "./Option.module.scss";
 import { classNames } from "helpers";
@@ -11,18 +11,18 @@ export type OptionType = {
 export type OptionProps = {
   option: OptionType;
   isSelected: boolean;
-  onClick: (value: OptionType) => void;
+  onClick: (value: string) => void;
 };
 
-const Option = (props: OptionProps) => {
+const Option = memo((props: OptionProps) => {
   const { option, onClick, isSelected } = props;
 
   const optionRef = useRef<HTMLLIElement>(null);
 
   const handleClick =
-    (clickedValue: OptionType): MouseEventHandler<HTMLLIElement> =>
+    (option: OptionType): MouseEventHandler<HTMLLIElement> =>
     () => {
-      onClick(clickedValue);
+      onClick(option.value);
     };
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const Option = (props: OptionProps) => {
 
     const handleEnterPress = (event: KeyboardEvent) => {
       if (document.activeElement === optionEl && event.key === "Enter") {
-        onClick(option);
+        onClick(option.value);
       }
     };
 
@@ -58,6 +58,6 @@ const Option = (props: OptionProps) => {
       )}
     </li>
   );
-};
+});
 
 export default Option;

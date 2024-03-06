@@ -1,23 +1,28 @@
+import { ChangeEvent, memo } from "react";
 import { useTranslation } from "react-i18next";
 import { classNames } from "helpers";
-import { useSelector } from "react-redux";
-import { Avatar, Button, Input, Loader, Select, Text } from "shared/ui";
 
-import { getProfileData } from "entities/Profile/model/selectors/getProfileData/getProfileData";
-import { getProfileIsLoadiong } from "entities/Profile/model/selectors/getProfileIsLoading/getProfileIsLoading";
-import { getProfileError } from "entities/Profile/model/selectors/getProfileError/getProfileError";
-
-import style from "./ProfileCard.module.scss";
 import { TextSize } from "shared/ui/Text/Text";
 import { ColorScheme } from "shared/ui/Button/Button";
-import { ChangeEvent, useCallback, useState } from "react";
-import { OptionType } from "shared/ui/Select/Option";
-import { useAppDispatch } from "app/providers/StoreProvider/config/store";
-import { fetchProfileData } from "entities/Profile/model/services/fetchProfileData/fetchProfileData";
-import { profileActions } from "entities/Profile/model/slice/profileSlice";
+import { Avatar, Button, Input, Loader, Select, Text } from "shared/ui";
+
+import { Profile } from "entities/Profile/model/types/profile";
+
+import style from "./ProfileCard.module.scss";
 
 interface ProfileCardProps {
   className?: string;
+  error?: string;
+  data?: Profile;
+  isLoading?: boolean;
+  isReadonly?: boolean;
+  isEditable?: boolean;
+  onChangeFirstname?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChangeLastname?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChangeBirthday?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChangeNickname?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChangeGender?: (e: string) => void;
+  onEditProfile?: () => void;
 }
 
 const genderOptions = [
@@ -25,41 +30,22 @@ const genderOptions = [
   { value: "famale", title: "Женский" },
 ];
 
-const ProfileCard: React.FC<ProfileCardProps> = ({ className }) => {
-  const dispatch = useAppDispatch();
-
-  const isLoading = useSelector(getProfileIsLoadiong);
-  const error = useSelector(getProfileError);
-  const data = useSelector(getProfileData);
-
+const ProfileCard: React.FC<ProfileCardProps> = memo((props) => {
   const { t } = useTranslation();
-
-  const onChangeFirstname = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    dispatch(profileActions.updateProfile({ firstname: value || "" }));
-  }, []);
-
-  const onChangeLastname = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    dispatch(profileActions.updateProfile({ lastname: value || "" }));
-  }, []);
-
-  const onChangeGender = useCallback((value: OptionType) => {
-    dispatch(profileActions.updateProfile({ gender: value || "" }));
-  }, []);
-
-  const onChangeBirthday = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-
-    const birthday = value.split(".");
-    const day = birthday[0];
-    const month = birthday[1];
-    const year = birthday[2];
-
-    dispatch(
-      profileActions.updateProfile({ birthday: { day, month, year } || "" })
-    );
-  }, []);
+  const {
+    className,
+    isLoading,
+    isReadonly,
+    isEditable,
+    error,
+    data,
+    onChangeFirstname,
+    onChangeLastname,
+    onChangeGender,
+    onChangeBirthday,
+    onChangeNickname,
+    onEditProfile,
+  } = props;
 
   if (isLoading) {
     return <Loader />;
@@ -84,11 +70,17 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ className }) => {
       </div>
       <div className={style.ProfileCard_body}>
         <div className={style.ProfileCard_body_line}>
-          <Input label={"Имя"} value={firstname} onChange={onChangeFirstname} />
+          <Input
+            label={"Имя"}
+            value={firstname}
+            onChange={onChangeFirstname}
+            readOnly={isReadonly}
+          />
           <Input
             label={"Фамилия"}
             value={lastname}
             onChange={onChangeLastname}
+            readOnly={isReadonly}
           />
         </div>
 
@@ -98,25 +90,36 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ className }) => {
             options={genderOptions}
             value={gender}
             onChange={onChangeGender}
-            defaultValue={gender}
             placeholder="Укажите пол"
           />
           <Input
             label={"Дата рождения"}
             value={`${day}.${month}.${year}`}
             onChange={onChangeBirthday}
+            readOnly={isReadonly}
           />
         </div>
         <div className={style.ProfileCard_body_line_one}>
-          <Input label={"Никнейм"} defaultValue={username} />
+          <Input
+            label={"Никнейм"}
+            value={username}
+            onChange={onChangeNickname}
+            readOnly={isReadonly}
+          />
         </div>
-        <div className={style.ProfileCard_body_line}>
-          <Button isDisabled colorScheme={ColorScheme.WHITE}>
-            Сохранить
-          </Button>
-        </div>
+        {!isReadonly && (
+          <div className={style.ProfileCard_body_line}>
+            <Button
+              isDisabled={isEditable}
+              colorScheme={ColorScheme.WHITE}
+              onClick={onEditProfile}
+            >
+              Сохранить
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );
-};
+});
 export default ProfileCard;

@@ -6,11 +6,14 @@ import { classNames } from "helpers";
 import DynamicModuleLoader, {
   ReducersList,
 } from "shared/lib/components/DynamicModuleLoadert";
-import { fetchProfileData, profileReducer } from "entities/Profile";
+
+import { profileReducer } from "features/Profile";
+import { fetchProfileData } from "features/Profile";
+
 import { useAppDispatch } from "app/providers/StoreProvider/config/store";
+import { EditableProfileCard } from "features/Profile/";
 
 import style from "./Profile.module.scss";
-import ProfileCard from "entities/Profile/ui/ProfileCard/ProfileCard";
 
 const reducers: ReducersList = {
   profile: profileReducer,
@@ -33,7 +36,7 @@ const Profile: React.FC<ProfileProps> = ({ className }) => {
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <div className={classNames(style.Profile, {}, [className])}>
-        <ProfileCard />
+        <EditableProfileCard />
       </div>
     </DynamicModuleLoader>
   );

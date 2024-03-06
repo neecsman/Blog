@@ -8,7 +8,7 @@ import { AxiosInstance } from "axios";
 import { ProfileSchema } from "entities/Profile";
 import { UserSchema } from "entities/User";
 import { LoginSchema } from "features/Auth/AuthByUsername";
-import { NavigateFunction, NavigateOptions, To } from "react-router-dom";
+import { NavigateOptions, To } from "react-router-dom";
 
 export interface StateSchema {
   user: UserSchema;

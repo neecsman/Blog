@@ -9,7 +9,7 @@ import { StoreProvider } from "app/providers/StoreProvider";
 
 import { loginReducer } from "features/Auth/AuthByUsername/model/slice/loginSlice";
 import { ReducersList } from "shared/lib/components/DynamicModuleLoadert";
-import { profileReducer } from "entities/Profile";
+import { profileReducer } from "features/Profile";
 
 const globalDecorator = (Story: StoryFn, context: StoryContext) => {
   const { locale, theme = Theme.LIGHT } = context.globals;

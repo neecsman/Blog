@@ -22,7 +22,7 @@ type SelectProps = {
   defaultValue?: string;
   options?: OptionType[];
   placeholder?: string;
-  onChange?: (value: OptionType) => void;
+  onChange?: (value: string) => void;
   onClose?: () => void;
 };
 
@@ -59,18 +59,10 @@ const Select: React.FC<SelectProps> = memo((props) => {
   const handleSelectClick: MouseEventHandler<HTMLDivElement> = () =>
     setIsOpen((prev) => !prev);
 
-  const handleOptionClick = (value: OptionType) => {
+  const handleOptionClick = (value: string) => {
     setIsOpen(false);
     onChange?.(value);
   };
-
-  useEffect(() => {
-    const selected = options?.filter((item) => item.value === defaultValue);
-    if (!selected) {
-      return;
-    }
-    onChange?.(selected[0]);
-  }, []);
 
   useEffect(() => {
     window.addEventListener("click", handleOutsideClick);
@@ -90,6 +82,8 @@ const Select: React.FC<SelectProps> = memo((props) => {
       selectElem.removeEventListener("keydown", handleKeydown);
     };
   }, []);
+
+  const title = options?.filter((item) => item.value === value)[0].title;
 
   return (
     <div
@@ -112,7 +106,7 @@ const Select: React.FC<SelectProps> = memo((props) => {
         <div className={style.arrow}>
           <ArrowDrop fill={"gray"} />
         </div>
-        {value || defaultValue || placeholder}
+        {title || defaultValue || placeholder}
       </div>
       {isOpen && (
         <ul className={style.option_list}>
