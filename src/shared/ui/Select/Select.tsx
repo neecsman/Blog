@@ -21,7 +21,7 @@ type SelectProps = {
   value?: string;
   defaultValue?: string;
   options?: OptionType[];
-  placeholder?: string;
+  placeholder: string;
   onChange?: (value: string) => void;
   onClose?: () => void;
 };
@@ -83,7 +83,7 @@ const Select: React.FC<SelectProps> = memo((props) => {
     };
   }, []);
 
-  const title = options?.filter((item) => item.value === value)[0].title;
+  // const title = options?.filter((item) => item.value === value)[0].title;
 
   return (
     <div
@@ -106,7 +106,7 @@ const Select: React.FC<SelectProps> = memo((props) => {
         <div className={style.arrow}>
           <ArrowDrop fill={"gray"} />
         </div>
-        {title || defaultValue || placeholder}
+        {defaultValue || placeholder}
       </div>
       {isOpen && (
         <ul className={style.option_list}>
