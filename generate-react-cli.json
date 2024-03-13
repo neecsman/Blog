@@ -15,7 +15,23 @@
       "withStory": true,
       "withStyle": true,
       "withTest": false
+    },
+    "page": {
+      "customTemplates": {
+        "component": "templates/pages/TemplateName.tsx",
+        "style": "templates/pages/TemplateName.module.scss",
+        "story": "templates/pages/TemplateName.stories.ts",
+        "lazy":  "templates/pages/TemplateName.lazy.ts"
+      },
+      "path": "src/pages",
+      "withLazy": true,
+      "withStory": true,
+      "withStyle": true,
+      "withTest": false
     }
+    
+
+
   },
   "usesStyledComponents": false
 }
