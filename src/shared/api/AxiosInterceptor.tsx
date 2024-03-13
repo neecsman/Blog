@@ -14,11 +14,7 @@ const AxiosInterceptor = ({ children }: { children: React.ReactNode }) => {
       return res;
     };
     const errInterceptor = (error: AxiosError) => {
-      if (error?.response?.status === 401) {
-        dispatch(userActions.logout());
-        navigate("/");
-      }
-      return Promise.reject(error);
+      return error;
     };
 
     const interceptor = api.interceptors.response.use(

@@ -8,12 +8,14 @@ import PageLoader from "widgets/PageLoader/ui/PageLoader";
 
 import "./styles/index.scss";
 import { useAppDispatch } from "./providers/StoreProvider/config/store";
-import { userActions } from "entities/User";
+import { getUserInited, userActions } from "entities/User";
+import { useSelector } from "react-redux";
 
 const App = () => {
   const { theme } = useTheme();
 
   const dispatch = useAppDispatch();
+  const inited = useSelector(getUserInited);
 
   useEffect(() => {
     dispatch(userActions.initAuthData());
@@ -25,7 +27,7 @@ const App = () => {
         <Navbar />
         <div className="content-page">
           <Sidebar />
-          <AppRouter />
+          {inited && <AppRouter />}
         </div>
       </Suspense>
     </div>
