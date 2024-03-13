@@ -3,13 +3,14 @@ import { memo } from "react";
 
 import style from "./Avatar.module.scss";
 
-import Female from "../../assets/img/female_person.png";
-import Male from "../../assets/img/male_person.png";
+import Female from "../../assets/img/female.png";
+import Male from "../../assets/img/male.png";
+import { Gender } from "entities/Profile/model/types/profile";
 interface AvatarProps {
   className?: string;
   src: string;
   alt: string;
-  gender: "male" | "female";
+  gender: Gender;
 }
 
 const Avatar: React.FC<AvatarProps> = memo(
@@ -19,7 +20,7 @@ const Avatar: React.FC<AvatarProps> = memo(
         {src ? (
           <img src={src} alt={alt} />
         ) : (
-          <img src={gender === "male" ? Male : Female} alt={alt} />
+          <img src={gender === Gender.MALE ? Male : Female} alt={alt} />
         )}
       </div>
     );

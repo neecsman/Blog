@@ -3,7 +3,7 @@ import { StateSchema, ThunkExtraArg } from "./StateSchema";
 import { userReducer } from "entities/User";
 import { createReducerManager } from "./reducerManager";
 import { useDispatch } from "react-redux";
-import { api } from "shared/api/api";
+import api from "shared/api/api";
 import { NavigateOptions, To } from "react-router-dom";
 
 export default function createReduxStore(

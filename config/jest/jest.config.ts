@@ -10,6 +10,7 @@ const config: Config = {
   testEnvironment: "jsdom",
   globals: {
     __IS_DEV__: true,
+    __PROJECT__: "jest",
   },
   clearMocks: true,
   rootDir: "../../",

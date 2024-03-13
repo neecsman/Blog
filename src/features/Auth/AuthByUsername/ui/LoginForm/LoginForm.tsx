@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Button, Input, Text } from "shared/ui";
 
 import { loginActions, loginReducer } from "../..//model/slice/loginSlice";
-import { loginByUsername } from "features/Auth/AuthByUsername/model/services/loginByUsername/loginByUsername";
+import { loginByUsername } from "features/Auth/AuthByUsername/model/api/loginByUsername/loginByUsername";
 import { useAppDispatch } from "app/providers/StoreProvider/config/store";
 
 import { classNames } from "helpers";

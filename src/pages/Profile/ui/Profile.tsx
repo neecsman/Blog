@@ -27,10 +27,10 @@ const Profile: React.FC<ProfileProps> = ({ className }) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
-  console.log("Page render");
-
   useEffect(() => {
-    dispatch(fetchProfileData());
+    if (__PROJECT__ !== "storybook") {
+      dispatch(fetchProfileData());
+    }
   }, [dispatch]);
 
   return (

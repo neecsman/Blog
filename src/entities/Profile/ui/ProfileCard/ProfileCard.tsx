@@ -91,6 +91,7 @@ const ProfileCard: React.FC<ProfileCardProps> = memo((props) => {
             value={gender}
             onChange={onChangeGender}
             placeholder="Укажите пол"
+            isReadonly={isReadonly}
           />
           <Input
             label={"Дата рождения"}

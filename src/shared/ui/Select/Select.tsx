@@ -1,11 +1,4 @@
-import {
-  MouseEventHandler,
-  memo,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { MouseEventHandler, memo, useEffect, useRef, useState } from "react";
 import { classNames } from "helpers";
 
 import ArrowDrop from "../../assets/icons/arrow_drop.svg";
@@ -22,6 +15,7 @@ type SelectProps = {
   defaultValue?: string;
   options?: OptionType[];
   placeholder: string;
+  isReadonly?: boolean;
   onChange?: (value: string) => void;
   onClose?: () => void;
 };
@@ -34,10 +28,12 @@ const Select: React.FC<SelectProps> = memo((props) => {
     value,
     placeholder = "Placeholder",
     defaultValue,
+    isReadonly,
     onChange,
     onClose,
   } = props;
 
+  const [selected, setSelected] = useState<OptionType>();
   const [isOpen, setIsOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const selectRef = useRef<HTMLDivElement>(null);
@@ -61,10 +57,12 @@ const Select: React.FC<SelectProps> = memo((props) => {
 
   const handleOptionClick = (value: string) => {
     setIsOpen(false);
+    setSelected(options?.filter((item) => item.value === value)[0]);
     onChange?.(value);
   };
 
   useEffect(() => {
+    setSelected(options?.filter((item) => item.value === value)[0]);
     window.addEventListener("click", handleOutsideClick);
 
     return () => {
@@ -83,21 +81,22 @@ const Select: React.FC<SelectProps> = memo((props) => {
     };
   }, []);
 
-  // const title = options?.filter((item) => item.value === value)[0].title;
-
   return (
     <div
       ref={rootRef}
       className={classNames(
         style.Select_wrapper,
-        { [style.opened]: isOpen, [style.closed]: !isOpen },
+        {
+          [style.opened]: isOpen,
+          [style.closed]: !isOpen,
+          [style.readonly]: isReadonly,
+        },
         [className]
       )}
     >
       {label && <label>{label}</label>}
       <div
         className={style.select}
-        data-selected={!!value}
         onClick={handleSelectClick}
         role="button"
         tabIndex={0}
@@ -106,7 +105,7 @@ const Select: React.FC<SelectProps> = memo((props) => {
         <div className={style.arrow}>
           <ArrowDrop fill={"gray"} />
         </div>
-        {defaultValue || placeholder}
+        {selected?.title || defaultValue || placeholder}
       </div>
       {isOpen && (
         <ul className={style.option_list}>
@@ -115,7 +114,7 @@ const Select: React.FC<SelectProps> = memo((props) => {
               <Option
                 key={option.value}
                 option={option}
-                isSelected={value === option.value}
+                isSelected={selected?.value === option.value}
                 onClick={handleOptionClick}
               />
             ))}

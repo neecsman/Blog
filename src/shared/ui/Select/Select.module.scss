@@ -64,3 +64,8 @@ label {
     border-bottom-right-radius: 0px;
   }
 }
+
+.readonly {
+  pointer-events: none;
+  opacity: 0.7;
+}

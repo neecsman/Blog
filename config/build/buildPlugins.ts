@@ -6,6 +6,7 @@ import { BuildOptions } from "./types/config";
 export function buildPlugins({
   paths,
   isDev,
+  project,
 }: BuildOptions): webpack.WebpackPluginInstance[] {
   return [
     new HTMLWebpackPlugin({
@@ -18,6 +19,7 @@ export function buildPlugins({
     }),
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
+      __PROJECT__: JSON.stringify(project),
     }),
     new webpack.HotModuleReplacementPlugin(),
   ];

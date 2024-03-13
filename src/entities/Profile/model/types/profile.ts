@@ -6,11 +6,16 @@ export type Birthday = {
   year: string;
 };
 
+export enum Gender {
+  MALE = "male",
+  FEMALE = "female",
+}
+
 export interface Profile {
   username: string;
   firstname: string;
   lastname: string;
-  gender: "male" | "female";
+  gender: Gender;
   birthday: Birthday;
   currency: Currency;
   country: Country;
