@@ -3,6 +3,7 @@
   "route": {
     "main": "Main",
     "about": "About",
-    "profile": "Profile"
+    "profile": "Profile",
+    "articles": "Articles"
   }
 }

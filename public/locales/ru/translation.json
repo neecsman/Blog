@@ -3,6 +3,7 @@
   "route": {
     "main": "Главная",
     "about": "О нас",
-    "profile": "Профиль"
+    "profile": "Профиль",
+    "articles": "Статьи"
   }
 }
