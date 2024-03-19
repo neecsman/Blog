@@ -8,10 +8,14 @@
   "Sign in": "Sign in",
   "Sign out": "Sign out",
   "SignIn": "SignIn",
+  "article": {
+    "not_found": "not_found"
+  },
   "auth": {
     "Sign in": "Sign in"
   },
   "language": "language",
+  "not_found": "not_found",
   "profile": {
     "title": "title"
   },

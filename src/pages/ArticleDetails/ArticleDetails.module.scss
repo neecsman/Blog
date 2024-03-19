@@ -1,2 +1,15 @@
 .articleDetails {
+  width: 100%;
+}
+
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0 auto;
+  max-width: 600px;
+  height: auto;
+  padding: 1.5rem;
+  background-color: var(--inverted-bg-color);
+  border-radius: var(--rounded-sm);
 }

@@ -6,12 +6,12 @@ export interface Article {
   views: number;
   created_at: Date;
   updated_at: Date;
-  tags: ArticleTags[];
+  tags: ArticleTagsType[];
   blocks: ArticleBlock[];
   comments: Comment[];
 }
 
-export enum ArticleTags {
+export enum ArticleTagsType {
   IT = "IT",
   SCIENCE = "SCIENS",
   DIGITAL = "DIGITAL",
