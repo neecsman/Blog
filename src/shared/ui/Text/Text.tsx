@@ -3,6 +3,8 @@ import style from "./Text.module.scss";
 import { memo } from "react";
 
 export enum TextVariant {
+  TITLE = "title",
+  SUBTITLE = "subtitle",
   ERROR = "error",
   BASE = "base",
 }
@@ -23,7 +25,7 @@ export interface TextProps {
   className?: string;
   variant?: TextVariant;
   size?: TextSize;
-  children: string;
+  children?: string;
 }
 
 const Text: React.FC<TextProps> = memo(

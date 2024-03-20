@@ -1,0 +1,9 @@
+.image {
+  display: flex;
+  border-radius: var(--rounded-sm);
+  overflow: hidden;
+
+  img {
+    width: 100%;
+  }
+}

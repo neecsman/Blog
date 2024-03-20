@@ -12,12 +12,12 @@
   }
 
   &:active {
-    background: var(--color-gray-darken);
+    background: var(--color-gray);
   }
 }
 
 .active {
-  background: var(--color-gray-darken);
+  background: var(--color-gray-lighten);
 }
 
 .icon {

@@ -10,13 +10,17 @@ interface AvatarProps {
   className?: string;
   src: string;
   alt: string;
-  gender: Gender;
+  size?: number;
+  gender?: Gender;
 }
 
 const Avatar: React.FC<AvatarProps> = memo(
-  ({ className, src, alt = "Avatar", gender }) => {
+  ({ className, src, alt = "Avatar", gender, size }) => {
     return (
-      <div className={classNames(style.Avatar, {}, [className])}>
+      <div
+        style={{ width: size, height: size }}
+        className={classNames(style.Avatar, {}, [className])}
+      >
         {src ? (
           <img src={src} alt={alt} />
         ) : (

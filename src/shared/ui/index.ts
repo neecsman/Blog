@@ -5,3 +5,5 @@ export { default as Text } from "./Text/Text";
 export { default as Avatar } from "./Avatar/Avatar";
 export { default as Select } from "./Select/Select";
 export { default as Skeleton } from "./Skeleton/Skeleton";
+export { default as Image } from "./Image/Image";
+export { default as Code } from "./Code/Code";
