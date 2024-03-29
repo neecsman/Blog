@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import ArticleImageBlock from "./ArticleImageBlock";
-import { ArticleBlockType } from "entities/Article/model/types/article";
+import { ArticleBlockType } from "entities/Article/model/types/Article";
 
 const meta = {
-  title: "entities/ArticleImageBlock",
+  title: "entities/ArticleDetails/ImageBlock",
   component: ArticleImageBlock,
   parameters: {},
 } satisfies Meta<typeof ArticleImageBlock>;
@@ -12,7 +12,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const ArticleText: Story = {
+export const ArticleImage: Story = {
   args: {
     block: {
       id: 1,

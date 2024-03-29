@@ -10,6 +10,7 @@ describe("loginByUsername.test", () => {
       email: "",
       firstname: "",
       lastname: "",
+      avatar: "",
     };
 
     const thunk = new TestAsyncThunk(loginByUsername);

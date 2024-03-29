@@ -1,0 +1,16 @@
+.commentCard {
+  display: flex;
+  flex-direction: column;
+  //   background: var(--color-gray-darken);
+  //   border-radius: var(--rounded-sm);
+  //   border: 1px solid var(--color-gray);
+  padding: 1rem;
+  gap: 0.5rem;
+
+  &_header {
+    .user {
+      display: flex;
+      gap: 0.5rem;
+    }
+  }
+}

@@ -14,6 +14,13 @@
   "auth": {
     "Sign in": "Sign in"
   },
+  "comment": {
+    "empty": "empty"
+  },
+  "comments": {
+    "empty": "empty"
+  },
+  "empty": "empty",
   "language": "language",
   "new artic": "new artic",
   "new article": "new article",

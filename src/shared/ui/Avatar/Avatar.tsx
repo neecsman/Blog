@@ -8,8 +8,8 @@ import Male from "../../assets/img/male.png";
 import { Gender } from "entities/Profile/model/types/profile";
 interface AvatarProps {
   className?: string;
-  src: string;
-  alt: string;
+  src?: string;
+  alt?: string;
   size?: number;
   gender?: Gender;
 }
@@ -22,9 +22,12 @@ const Avatar: React.FC<AvatarProps> = memo(
         className={classNames(style.Avatar, {}, [className])}
       >
         {src ? (
-          <img src={src} alt={alt} />
+          <img src={src} alt={alt || "Avatar"} />
         ) : (
-          <img src={gender === Gender.MALE ? Male : Female} alt={alt} />
+          <img
+            src={gender === Gender.MALE ? Male : Female}
+            alt={alt || "Avatar"}
+          />
         )}
       </div>
     );

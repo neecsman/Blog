@@ -45,7 +45,7 @@ const Code: React.FC<CodeProps> = ({ className, value }) => {
       <Editor
         value={code}
         onValueChange={(code) => setCode(code)}
-        highlight={(code) => highlight(code, languages.tsx, "tsx")}
+        highlight={(code) => highlight(code, languages.markup, "markup")}
         padding={14}
         style={styles}
         preClassName="line-numbers"

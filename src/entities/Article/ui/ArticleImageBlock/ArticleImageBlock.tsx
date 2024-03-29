@@ -1,7 +1,7 @@
 import { classNames } from "helpers";
 import style from "./ArticleImageBlock.module.scss";
 import { memo } from "react";
-import { ArticleImageBlock } from "../..//model/types/article";
+import { ArticleImageBlock } from "../../model/types/Article";
 import { Image, Text } from "shared/ui";
 import { TextVariant } from "shared/ui/Text/Text";
 

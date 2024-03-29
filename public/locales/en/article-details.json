@@ -1,3 +1,6 @@
 {
-    "not_found": "Article not found"
+    "not_found": "Article not found",
+    "comments": {
+        "empty": "There are no comments"
+    }
 }

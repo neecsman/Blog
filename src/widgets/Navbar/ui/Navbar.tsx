@@ -34,30 +34,22 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
     dispatch(userActions.logout());
   };
 
-  if (authData) {
-    return (
-      <div className={classNames(style.navbar)}>
-        <div className={style.btn_group}>
-          <Button
-            onClick={onLogout}
-            variant={ButtonVariant.SOLID}
-            colorScheme={ColorScheme.BLUE}
-            size={ButtonSize.L}
-          >
-            {t("Sign out")}
-          </Button>
-        </div>
-      </div>
-    );
-  }
+  let authBtn;
 
-  return (
-    <div className={classNames(style.navbar)}>
-      <div className={style.btn_group}>
-        <div className={style.switcher}>
-          <ThemeSwithcer />
-          <LangSwitcher className={style.lang} />
-        </div>
+  if (authData) {
+    authBtn = (
+      <Button
+        onClick={onLogout}
+        variant={ButtonVariant.SOLID}
+        colorScheme={ColorScheme.BLUE}
+        size={ButtonSize.L}
+      >
+        {t("Sign out")}
+      </Button>
+    );
+  } else {
+    authBtn = (
+      <>
         <Button
           onClick={onOpen}
           variant={ButtonVariant.SOLID}
@@ -67,6 +59,18 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
           {t("Sign in")}
         </Button>
         <LoginModal isOpen={isOpen} onClose={onClose} />
+      </>
+    );
+  }
+
+  return (
+    <div className={classNames(style.navbar)}>
+      <div className={style.btn_group}>
+        <div className={style.switcher}>
+          <ThemeSwithcer />
+          <LangSwitcher className={style.lang} />
+          {authBtn}
+        </div>
       </div>
     </div>
   );
