@@ -1,2 +1,21 @@
 .code {
+  position: relative;
+  overflow-x: auto;
+  background: var(--bg-color);
+  border-radius: var(--rounded-sm);
+}
+
+pre {
+  min-width: 550px;
+}
+
+textarea {
+  outline: none;
+}
+
+.copy_btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 10;
 }

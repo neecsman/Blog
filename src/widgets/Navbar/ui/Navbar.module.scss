@@ -10,7 +10,13 @@
 
 .btn_group {
   display: flex;
-  align-items: center;
   gap: 5px;
   margin-left: auto;
+}
+
+.switcher {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-right: 20px;
 }

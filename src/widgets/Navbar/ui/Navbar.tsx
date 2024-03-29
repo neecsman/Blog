@@ -2,7 +2,11 @@ import React from "react";
 import { classNames } from "helpers";
 
 import { Button } from "shared/ui";
-import { ButtonVariant, ColorScheme } from "shared/ui/Button/Button";
+import {
+  ButtonSize,
+  ButtonVariant,
+  ColorScheme,
+} from "shared/ui/Button/Button";
 
 import { useDisclosure } from "helpers/hooks";
 import { LoginModal } from "features/Auth/AuthByUsername";
@@ -13,6 +17,8 @@ import { useSelector } from "react-redux";
 import { getUserAuthData } from "entities/User/model/selectors/getUserAuthData";
 import { useAppDispatch } from "app/providers/StoreProvider/config/store";
 import { userActions } from "entities/User";
+import { ThemeSwithcer } from "widgets/ThemeSwitcher";
+import { LangSwitcher } from "widgets/LangSwitcher";
 
 interface NavbarProps {
   className?: string;
@@ -36,6 +42,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
             onClick={onLogout}
             variant={ButtonVariant.SOLID}
             colorScheme={ColorScheme.BLUE}
+            size={ButtonSize.L}
           >
             {t("Sign out")}
           </Button>
@@ -47,10 +54,15 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
   return (
     <div className={classNames(style.navbar)}>
       <div className={style.btn_group}>
+        <div className={style.switcher}>
+          <ThemeSwithcer />
+          <LangSwitcher className={style.lang} />
+        </div>
         <Button
           onClick={onOpen}
           variant={ButtonVariant.SOLID}
           colorScheme={ColorScheme.BLUE}
+          size={ButtonSize.L}
         >
           {t("Sign in")}
         </Button>

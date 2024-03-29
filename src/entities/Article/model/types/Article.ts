@@ -25,6 +25,11 @@ export type ArticleBlock =
   | ArticleImageBlock
   | ArticleCodetBlock;
 
+export type Paragraph = {
+  id: number;
+  text: string;
+};
+
 export interface ArticleBlockBase {
   id: number;
   type: ArticleBlockType;
@@ -33,7 +38,7 @@ export interface ArticleBlockBase {
 export interface ArticleTextBlock extends ArticleBlockBase {
   type: ArticleBlockType.TEXT;
   title?: string;
-  paragraphs: string[];
+  paragraphs: Paragraph[];
 }
 export interface ArticleImageBlock extends ArticleBlockBase {
   type: ArticleBlockType.IMAGE;

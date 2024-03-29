@@ -1,18 +1,21 @@
-import { useTranslation } from "react-i18next";
 import { classNames } from "helpers";
 import style from "./ArticleImageBlock.module.scss";
 import { memo } from "react";
+import { ArticleImageBlock } from "../..//model/types/article";
+import { Image, Text } from "shared/ui";
+import { TextVariant } from "shared/ui/Text/Text";
 
 interface ArticleImageBlockProps {
   className?: string;
+  block: ArticleImageBlock;
 }
 
 const ArticleImageBlock: React.FC<ArticleImageBlockProps> = memo(
-  ({ className }) => {
-    const { t } = useTranslation();
+  ({ className, block }) => {
     return (
       <div className={classNames(style.ArticleImageBlock, {}, [className])}>
-        IMAGE
+        <Text variant={TextVariant.TITLE}>{block.title}</Text>
+        <Image src={block.src} alt={block.title} />
       </div>
     );
   }

@@ -1,5 +1,8 @@
 .button {
-  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--rounded-xs);
   cursor: pointer;
   color: var(--primary-color);
   padding: 5px 10px;
@@ -11,10 +14,8 @@
   }
 }
 
-.icon {
-  svg {
-    fill: var(--primary-color);
-  }
+svg {
+  fill: var(--primary-color);
 }
 
 // color scheme

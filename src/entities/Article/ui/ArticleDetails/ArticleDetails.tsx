@@ -24,6 +24,8 @@ import ArticleTextBlock from "../ArticleTextBlock/ArticleTextBlock";
 import ArticleCodeBlock from "../ArticleCodeBlock/ArticleCodeBlock";
 import ArticleImageBlock from "../ArticleImageBlock/ArticleImageBlock";
 
+import ViewIcon from "shared/assets/icons/view.svg";
+
 interface ArticleDetailsProps {
   className?: string;
   id: string;
@@ -45,13 +47,13 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = memo(
     const renderBlock = (block: ArticleBlock) => {
       switch (block.type) {
         case ArticleBlockType.TEXT:
-          return <ArticleTextBlock />;
+          return <ArticleTextBlock block={block} />;
 
         case ArticleBlockType.CODE:
           return <ArticleCodeBlock block={block} />;
 
         case ArticleBlockType.IMAGE:
-          return <ArticleImageBlock />;
+          return <ArticleImageBlock block={block} />;
 
         default:
           return null;
@@ -89,6 +91,7 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = memo(
               alt="avatar"
               size={50}
             />
+
             <div>
               <Text variant={TextVariant.TITLE}>Никита Колесников</Text>
               <Text size={TextSize.SM} variant={TextVariant.SUBTITLE}>
@@ -117,7 +120,14 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = memo(
             </div>
           </div>
 
-          <div className={style.articleDetails_footer}></div>
+          <div className={style.articleDetails_footer}>
+            <div className={style.articleDetails_tags}></div>
+            <div className={style.articleDetails_info}>
+              <div className={style.articleDetails_info_view}>
+                <ViewIcon /> {article?.views}
+              </div>
+            </div>
+          </div>
         </>
       );
     }

@@ -14,7 +14,7 @@ const ArticleCodeBlock: React.FC<ArticleCodeBlockProps> = memo(
   ({ className, block }) => {
     const { t } = useTranslation();
     return (
-      <div className={classNames(style.ArticleCodeBlock, {}, [className])}>
+      <div className={classNames(style.articleCodeBlock, {}, [className])}>
         <Code value={block.code} />
       </div>
     );

@@ -2,16 +2,22 @@ import { classNames } from "helpers";
 import { useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "shared/ui";
-import { ThemeSwithcer } from "widgets/ThemeSwitcher";
-import { LangSwitcher } from "widgets/LangSwitcher";
+
 import { Theme } from "app/providers/ThemeProvider";
-import { ButtonSize, ButtonVariant } from "shared/ui/Button/Button";
+import {
+  ButtonSize,
+  ButtonVariant,
+  ColorScheme,
+} from "shared/ui/Button/Button";
 import SidebarIcon from "shared/assets/icons/hamburger-sidebar.svg";
 
 import SidebarItem from "../SidebarItem/SidebarItem";
 
+import EditIcon from "shared/assets/icons/edit.svg";
 import style from "./Sidebar.module.scss";
 import { SidebarItemsList } from "widgets/Sidebar/model/types/SidebarItemType";
+import { ThemeSwithcer } from "widgets/ThemeSwitcher";
+import { LangSwitcher } from "widgets/LangSwitcher";
 
 interface SidebarProps {
   className?: string;
@@ -20,6 +26,7 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ className, theme }) => {
   const [collapsed, setCollapsed] = useState(false);
+  const { t } = useTranslation();
   const onToggle = useCallback(() => {
     setCollapsed((prev) => !prev);
   }, []);
@@ -52,10 +59,15 @@ const Sidebar: React.FC<SidebarProps> = ({ className, theme }) => {
           </SidebarItem>
         ))}
       </div>
-      <div className={style.switcher}>
-        <ThemeSwithcer />
-        <LangSwitcher className={style.lang} />
-      </div>
+      {/* <div className={style.new_article}>
+        <Button
+          size={ButtonSize.XL}
+          icon={<EditIcon />}
+          colorScheme={ColorScheme.BLUE}
+        >
+          {t("new article")}
+        </Button>
+      </div> */}
     </div>
   );
 };

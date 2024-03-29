@@ -58,7 +58,7 @@ const Button = memo((props: ButtonProps) => {
       disabled={isLoading || isDisabled}
       className={classNames(
         style.button,
-        { [style.icon]: icon ? true : false },
+        { [style.icon]: icon && !children ? true : false },
         [className, style[variant], style[size], style[colorScheme]]
       )}
     >

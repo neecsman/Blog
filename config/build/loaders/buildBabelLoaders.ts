@@ -1,5 +1,3 @@
-import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
-
 export function buildBabelLoaders(isDev: boolean) {
   return {
     test: /\.(js|jsx|tsx)$/,
@@ -12,6 +10,15 @@ export function buildBabelLoaders(isDev: boolean) {
           [
             "i18next-extract",
             { locales: ["ru", "en"], keyAsDefaultValue: true },
+          ],
+          [
+            "prismjs",
+            {
+              languages: ["javascript", "css", "markup", "tsx", "jsx"],
+              plugins: ["line-numbers"],
+              theme: "tomorrow",
+              css: true,
+            },
           ],
           isDev && require.resolve("react-refresh/babel"),
         ].filter(Boolean),

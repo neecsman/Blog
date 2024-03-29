@@ -1,0 +1,11 @@
+.articleTextBlock {
+  p {
+    text-align: justify;
+  }
+}
+
+.paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

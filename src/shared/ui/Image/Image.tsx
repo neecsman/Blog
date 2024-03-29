@@ -9,7 +9,7 @@ interface ImageProps {
 }
 
 const Image: React.FC<ImageProps> = memo((props) => {
-  const { className, src, alt } = props;
+  const { className, src, alt = "Image" } = props;
   return (
     <div className={classNames(style.image, {}, [className])}>
       <img src={src} alt={alt} />
