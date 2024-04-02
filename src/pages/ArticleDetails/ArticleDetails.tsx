@@ -25,6 +25,7 @@ const ArticleDetail: React.FC<ArticleDetailsProps> = ({ className }) => {
     <div className={classNames(style.articleDetails, {}, [className])}>
       <ArticleDetails id={id} />
       <CommentList
+        isLoading
         comments={[
           {
             id: 1,
