@@ -9,6 +9,9 @@
     background-color: var(--bg-color);
     color: var(--primary-color);
     resize: none;
+    overflow: hidden;
+    padding-top: 10px;
+    padding-bottom: 50px;
 
     &:focus {
       outline: 1px solid var(--color-blue);

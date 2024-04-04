@@ -16,7 +16,9 @@ import {
 import DynamicModuleLoader, {
   ReducersList,
 } from "shared/lib/components/DynamicModuleLoadert";
-import { ColorScheme } from "shared/ui/Button/Button";
+import { ButtonSize, ColorScheme } from "shared/ui/Button/Button";
+
+import SendIcon from "shared/assets/icons/send.svg";
 
 interface AddCommentFormProps {
   className?: string;
@@ -45,9 +47,12 @@ const AddCommentForm: React.FC<AddCommentFormProps> = ({ className }) => {
           placeholder={t("comments.textarea.placeholder")}
           rows={3}
         />
-        <Button isDisabled={text?.length == 0} colorScheme={ColorScheme.BLUE}>
-          {t("comments.send")}
-        </Button>
+
+        {text && text?.length > 0 && (
+          <Button isDisabled={text?.length == 0} colorScheme={ColorScheme.BLUE}>
+            {t("comments.send")}
+          </Button>
+        )}
       </div>
     </DynamicModuleLoader>
   );

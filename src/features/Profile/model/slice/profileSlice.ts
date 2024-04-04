@@ -3,6 +3,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Profile, ProfileSchema } from "entities/Profile/model/types/profile";
 import { fetchProfileData } from "../api/fetchProfileData/fetchProfileData";
 import { fetchEditProfile } from "../api/fetchEditProfile/fetchEditProfile";
+import { fetchProfileDataById } from "../api/fetchProfileDataById/fetchProfileDataById";
 
 const initialState: ProfileSchema = {
   readonly: undefined,
@@ -25,6 +26,8 @@ export const profileSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+
+      //PROFILE_DATA
       .addCase(fetchProfileData.pending, (state) => {
         state.error = undefined;
         state.isLoading = true;
@@ -42,6 +45,25 @@ export const profileSlice = createSlice({
         state.error = action.payload;
       })
 
+      //PROFILE_DATA_BY_ID
+      .addCase(fetchProfileDataById.pending, (state) => {
+        state.error = undefined;
+        state.isLoading = true;
+      })
+      .addCase(
+        fetchProfileDataById.fulfilled,
+        (state, action: PayloadAction<Profile>) => {
+          state.isLoading = false;
+          state.data = action.payload;
+          state.readonly = true;
+        }
+      )
+      .addCase(fetchProfileDataById.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
+      //EDIT_PROFILE_DATA
       .addCase(fetchEditProfile.pending, (state) => {
         state.error = undefined;
         state.isLoading = true;

@@ -15,6 +15,11 @@ import { EditableProfileCard } from "features/Profile/";
 
 import style from "./Profile.module.scss";
 
+import { useSelector } from "react-redux";
+import { getUserAuthData } from "entities/User/model/selectors/getUserAuthData";
+
+import { getProfileData } from "features/Profile/model/selectors/getProfileData/getProfileData";
+
 const reducers: ReducersList = {
   profile: profileReducer,
 };
@@ -25,6 +30,9 @@ interface ProfileProps {
 
 const Profile: React.FC<ProfileProps> = ({ className }) => {
   const { t } = useTranslation();
+
+  const user = useSelector(getUserAuthData);
+  const profile = useSelector(getProfileData);
   const dispatch = useAppDispatch();
 
   useEffect(() => {

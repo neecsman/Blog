@@ -65,7 +65,7 @@ const ProfileCard: React.FC<ProfileCardProps> = memo((props) => {
   return (
     <div className={classNames(style.ProfileCard, {}, [className])}>
       <div className={style.ProfileCard_header}>
-        <Avatar src={""} alt="Avatar" gender={gender} />
+        <Avatar src={avatar} alt="Avatar" gender={gender} />
         <Text size={TextSize["XL"]}>{`${firstname} ${lastname}`}</Text>
       </div>
       <div className={style.ProfileCard_body}>

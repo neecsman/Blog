@@ -5,6 +5,7 @@ import {
   Articles,
   ArticleDetails,
   NotFoundPage,
+  ProfileDetails,
 } from "pages";
 import { RouteProps } from "react-router-dom";
 
@@ -16,6 +17,7 @@ export enum AppRoutes {
   MAIN = "main",
   ABOUT = "about",
   PROFILE = "profile",
+  PROFILE_DETAILS = "profile_details",
   ARTICLES = "articles",
   ARTICLE_DETAILS = "article_details",
   //last
@@ -26,6 +28,7 @@ export const RouterPath: Record<AppRoutes, string> = {
   [AppRoutes.MAIN]: "/",
   [AppRoutes.ABOUT]: "/about",
   [AppRoutes.PROFILE]: "/profile",
+  [AppRoutes.PROFILE_DETAILS]: "/profile/",
   [AppRoutes.ARTICLES]: "/articles",
   [AppRoutes.ARTICLE_DETAILS]: "/articles/",
 
@@ -48,6 +51,12 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
     element: <Profile />,
     protected: true,
   },
+
+  [AppRoutes.PROFILE_DETAILS]: {
+    path: `${RouterPath.profile_details}:id`,
+    element: <ProfileDetails />,
+  },
+
   [AppRoutes.ARTICLES]: {
     path: RouterPath.articles,
     element: <Articles />,
