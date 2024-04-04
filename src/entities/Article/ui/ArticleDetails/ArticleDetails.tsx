@@ -19,7 +19,7 @@ import { TextSize, TextVariant } from "shared/ui/Text/Text";
 import {
   ArticleBlock,
   ArticleBlockType,
-} from "entities/Article/model/types/Article";
+} from "entities/Article/model/types/article";
 import ArticleTextBlock from "../ArticleTextBlock/ArticleTextBlock";
 import ArticleCodeBlock from "../ArticleCodeBlock/ArticleCodeBlock";
 import ArticleImageBlock from "../ArticleImageBlock/ArticleImageBlock";

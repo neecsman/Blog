@@ -18,7 +18,12 @@
     "empty": "empty"
   },
   "comments": {
-    "empty": "empty"
+    "empty": "empty",
+    "send": "send",
+    "textarea": {
+      "placeholder": "placeholder"
+    },
+    "title": "title"
   },
   "empty": "empty",
   "language": "language",

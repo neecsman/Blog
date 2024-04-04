@@ -3,7 +3,7 @@ import { classNames } from "helpers";
 
 import style from "./CommentCard.module.scss";
 import { Avatar, Text } from "shared/ui";
-import { TextSize, TextVariant } from "shared/ui/Text/Text";
+import { TextSize } from "shared/ui/Text/Text";
 
 interface CommentCartProps {
   className?: string;

@@ -1,6 +1,11 @@
 {
     "not_found": "Article not found",
     "comments": {
-        "empty": "There are no comments"
+        "title": "Comments",
+        "empty": "There are no comments",
+        "textarea": {
+            "placeholder": "Your comment..."
+            },
+            "send": "Send"
     }
 }

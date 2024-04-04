@@ -3,6 +3,7 @@ import { classNames } from "helpers";
 import style from "./CommentList.module.scss";
 import { Skeleton, Text } from "shared/ui";
 import { useTranslation } from "react-i18next";
+import { TextVariant } from "shared/ui/Text/Text";
 
 interface CommentListProps {
   className?: string;
@@ -58,7 +59,9 @@ const CommentList: React.FC<CommentListProps> = (props) => {
           <CommentCard key={comment.id} comment={comment} />
         ))
       ) : (
-        <Text>{t("comments.empty")}</Text>
+        <div className={style.commentList_empty}>
+          <Text variant={TextVariant.SUBTITLE}>{t("comments.empty")}</Text>
+        </div>
       )}
     </div>
   );

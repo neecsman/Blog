@@ -23,7 +23,7 @@
   position: relative;
   max-width: 600px;
   padding: 20px;
-  border-radius: 6px;
+  border-radius: var(--rounded-sm);
   background: var(--bg-color);
   transition: var(--theme-transition);
   transform: scale(0.5);
