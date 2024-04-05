@@ -8,3 +8,4 @@ export { default as Skeleton } from "./Skeleton/Skeleton";
 export { default as Image } from "./Image/Image";
 export { default as Code } from "./Code/Code";
 export { default as Textarea } from "./Textarea/Textarea";
+export { default as AppLink } from "./AppLink/AppLink";

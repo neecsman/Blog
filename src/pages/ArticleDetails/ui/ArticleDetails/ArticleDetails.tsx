@@ -18,6 +18,7 @@ import { useEffect } from "react";
 import { useAppDispatch } from "app/providers/StoreProvider/config/store";
 import { fetchCommentsByArticleId } from "pages/ArticleDetails/model/api/fetchCommentsByArticleId/fetchCommentsByArticleId";
 import { AddCommentForm } from "features/ArticleDetails/addCommentForm";
+import { addCommentForArticle } from "pages/ArticleDetails/model/api/addCommentForArticle/addCommentForArticle";
 
 interface ArticleDetailsProps {
   className?: string;
@@ -34,10 +35,6 @@ const ArticleDetail: React.FC<ArticleDetailsProps> = ({ className }) => {
   const comments = useSelector(getArticleComment.selectAll);
   const isLoading = useSelector(getArticleCommentsIsLoading);
 
-  useEffect(() => {
-    dispatch(fetchCommentsByArticleId(id));
-  }, []);
-
   if (!id) {
     return (
       <div className={classNames(style.articleDetails, {}, [className])}>
@@ -45,6 +42,14 @@ const ArticleDetail: React.FC<ArticleDetailsProps> = ({ className }) => {
       </div>
     );
   }
+
+  useEffect(() => {
+    dispatch(fetchCommentsByArticleId(+id));
+  }, []);
+
+  const onSendComment = (text: string) => {
+    dispatch(addCommentForArticle(text));
+  };
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
@@ -54,7 +59,7 @@ const ArticleDetail: React.FC<ArticleDetailsProps> = ({ className }) => {
         </div>
         <div className={style.articleDetails_section}>
           <Text>{t("comments.title")}</Text>
-          <AddCommentForm />
+          <AddCommentForm onSendComment={onSendComment} />
           <CommentList isLoading={isLoading} comments={comments} />
         </div>
       </div>

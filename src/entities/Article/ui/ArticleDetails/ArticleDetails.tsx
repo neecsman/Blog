@@ -10,9 +10,9 @@ import { useAppDispatch } from "app/providers/StoreProvider/config/store";
 import { fetchArticleById } from "entities/Article/model/api/fetchArticleById/fetchArticleById";
 import { useSelector } from "react-redux";
 import {
-  getArticleStateData,
-  getArticleStateError,
-  getArticleStateIsLoading,
+  getArticleDetailsData,
+  getArticleDetailsError,
+  getArticleDetailsIsLoading,
 } from "../../model/selectors/getArticleDetailState/getArticleDetailState";
 import { Avatar, Image, Skeleton, Text } from "shared/ui";
 import { TextSize, TextVariant } from "shared/ui/Text/Text";
@@ -40,9 +40,9 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = memo(
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
 
-    const article = useSelector(getArticleStateData);
-    const error = useSelector(getArticleStateError);
-    const isLoading = useSelector(getArticleStateIsLoading);
+    const article = useSelector(getArticleDetailsData);
+    const error = useSelector(getArticleDetailsError);
+    const isLoading = useSelector(getArticleDetailsIsLoading);
 
     const renderBlock = (block: ArticleBlock) => {
       switch (block.type) {

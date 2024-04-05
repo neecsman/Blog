@@ -10,6 +10,8 @@ import { StoreProvider } from "app/providers/StoreProvider";
 import { loginReducer } from "features/Auth/AuthByUsername/model/slice/loginSlice";
 import { ReducersList } from "shared/lib/components/DynamicModuleLoadert";
 import { profileReducer } from "features/Profile";
+import { artilceDetailReducer } from "entities/Article/model/slice/articleDetailSlice";
+import { addCommentFormReducer } from "features/ArticleDetails/addCommentForm/model/slices/addCommentFormSlice";
 
 const globalDecorator = (Story: StoryFn, context: StoryContext) => {
   const { locale, theme = Theme.LIGHT } = context.globals;
@@ -21,6 +23,8 @@ const globalDecorator = (Story: StoryFn, context: StoryContext) => {
   const defaultAsyncReducers: ReducersList = {
     loginForm: loginReducer,
     profile: profileReducer,
+    articleDetail: artilceDetailReducer,
+    addCommentForm: addCommentFormReducer,
   };
 
   return (

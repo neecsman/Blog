@@ -2,7 +2,7 @@ import { memo } from "react";
 import { classNames } from "helpers";
 import { ArticleTextBlock } from "../../model/types/article";
 import { Text } from "shared/ui";
-import { TextVariant } from "shared/ui/Text/Text";
+import { TextSize, TextVariant } from "shared/ui/Text/Text";
 
 import style from "./ArticleTextBlock.module.scss";
 

@@ -1,10 +1,10 @@
 import { StateSchema } from "app/providers/StoreProvider";
 
-export const getArticleStateData = (state: StateSchema) =>
+export const getArticleDetailsData = (state: StateSchema) =>
   state.articleDetail?.data;
 
-export const getArticleStateError = (state: StateSchema) =>
+export const getArticleDetailsError = (state: StateSchema) =>
   state.articleDetail?.error;
 
-export const getArticleStateIsLoading = (state: StateSchema) =>
+export const getArticleDetailsIsLoading = (state: StateSchema) =>
   state.articleDetail?.isLoading;

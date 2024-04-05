@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { classNames } from "helpers";
 import style from "./ProfileDetails.module.scss";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useAppDispatch } from "app/providers/StoreProvider/config/store";
 import { fetchProfileDataById } from "features/Profile/model/api/fetchProfileDataById/fetchProfileDataById";
@@ -14,6 +14,7 @@ import DynamicModuleLoader, {
   ReducersList,
 } from "shared/lib/components/DynamicModuleLoadert";
 import { profileReducer } from "features/Profile";
+import { getUserAuthData } from "entities/User/model/selectors/getUserAuthData";
 
 interface ProfileDetailsProps {
   className?: string;
@@ -24,17 +25,21 @@ const redicers: ReducersList = {
 };
 
 const ProfileDetails: React.FC<ProfileDetailsProps> = ({ className }) => {
-  const { t } = useTranslation();
-
   const { id } = useParams();
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
+  const user = useSelector(getUserAuthData);
   const profile = useSelector(getProfileData);
   const isLoading = useSelector(getProfileIsLoadiong);
   const error = useSelector(getProfileError);
 
   if (!id) {
     return null;
+  }
+
+  if (user?.id == +id) {
+    navigate("/profile");
   }
 
   useEffect(() => {
