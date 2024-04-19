@@ -12,17 +12,17 @@ const api = axios.create({
   },
 });
 
-const resInterceptor = (res: AxiosResponse) => {
-  return res;
-};
-const errInterceptor = (error: AxiosError) => {
-  if (error.response?.status === 401) {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-  }
-  return error;
-};
+// const resInterceptor = (res: AxiosResponse) => {
+//   return res;
+// };
+// const errInterceptor = (error: AxiosError) => {
+//   if (error.response?.status === 401) {
+//     localStorage.removeItem("token");
+//     localStorage.removeItem("user");
+//   }
+//   return error;
+// };
 
-api.interceptors.response.use(resInterceptor, errInterceptor);
+// api.interceptors.response.use(resInterceptor, errInterceptor);
 
 export default api;

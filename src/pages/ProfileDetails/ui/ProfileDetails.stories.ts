@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import ProfileDetails from "./ProfileDetails";
-import { Theme } from "app/providers/ThemeProvider";
 
 const meta = {
-  title: "pages/Proflie",
+  title: "pages/ProflieDetails",
   component: ProfileDetails,
 
   argTypes: {},

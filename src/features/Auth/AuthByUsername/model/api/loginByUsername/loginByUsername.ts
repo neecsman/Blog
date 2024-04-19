@@ -40,6 +40,13 @@ export const loginByUsername = createAsyncThunk<
     localStorage.setItem(TOKEN_LOCALSTORAGE_KEY, data.token);
     dispatch(userActions.setAuthData(data.user));
 
+    extra.api.interceptors.request.use((config) => {
+      let token = localStorage.getItem(TOKEN_LOCALSTORAGE_KEY);
+      config.headers.Authorization = `Bearer ${token}`;
+
+      return config;
+    });
+
     return data.user;
   } catch (e) {
     return rejectWithValue("Error");

@@ -15,9 +15,11 @@ import SidebarItem from "../SidebarItem/SidebarItem";
 
 import EditIcon from "shared/assets/icons/edit.svg";
 import style from "./Sidebar.module.scss";
-import { SidebarItemsList } from "widgets/Sidebar/model/types/SidebarItemType";
+
 import { ThemeSwithcer } from "widgets/ThemeSwitcher";
 import { LangSwitcher } from "widgets/LangSwitcher";
+import { useSelector } from "react-redux";
+import { getSidebarItems } from "../../model/selectors/getSidebarItems";
 
 interface SidebarProps {
   className?: string;
@@ -26,10 +28,13 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ className, theme }) => {
   const [collapsed, setCollapsed] = useState(false);
+  const sidebarItems = useSelector(getSidebarItems);
   const { t } = useTranslation();
+
   const onToggle = useCallback(() => {
     setCollapsed((prev) => !prev);
   }, []);
+
   return (
     <div
       data-testid="sidebar"
@@ -48,7 +53,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className, theme }) => {
       />
 
       <div className={style.menu}>
-        {SidebarItemsList.map(({ Icon, text, path }) => (
+        {sidebarItems.map(({ Icon, text, path }) => (
           <SidebarItem
             key={path}
             icon={<Icon />}

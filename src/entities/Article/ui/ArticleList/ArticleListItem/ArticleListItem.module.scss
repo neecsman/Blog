@@ -1,0 +1,20 @@
+.articleListItem {
+  background-color: var(--inverted-bg-color);
+  border-radius: var(--rounded-sm);
+  overflow: hidden;
+}
+
+.grid {
+  .card {
+    max-width: 300px;
+    .infoWrapper {
+      padding: 1rem;
+    }
+  }
+}
+
+.row {
+  .card {
+    max-width: 600px;
+  }
+}

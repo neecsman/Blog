@@ -20,6 +20,11 @@ export enum ArticleTagsType {
   FINANCE = "FINANCE",
 }
 
+export enum ArticleView {
+  GRID = "grid",
+  ROW = "row",
+}
+
 export type ArticleBlock =
   | ArticleTextBlock
   | ArticleImageBlock
