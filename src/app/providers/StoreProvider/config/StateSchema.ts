@@ -13,6 +13,7 @@ import { UserSchema } from "entities/User";
 import { LoginSchema } from "features/Auth/AuthByUsername";
 import { ArticleDeatailsCommentSchema } from "pages/ArticleDetails";
 import { AddCommentFormSchema } from "features/ArticleDetails/addCommentForm";
+import { ArticlePageScheme } from "pages/Articles";
 
 export interface StateSchema {
   user: UserSchema;
@@ -20,6 +21,7 @@ export interface StateSchema {
   //async reducers
   loginForm?: LoginSchema;
   profile?: ProfileSchema;
+  articlesPage?: ArticlePageScheme;
   articleDetail?: ArticleDetailScheme;
   articleDetailsComments?: ArticleDeatailsCommentSchema;
   addCommentForm?: AddCommentFormSchema;

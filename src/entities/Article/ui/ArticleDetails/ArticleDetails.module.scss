@@ -18,6 +18,11 @@
       flex-direction: column;
       gap: 3rem;
     }
+
+    &_image {
+      border-radius: var(--rounded-sm);
+      overflow: hidden;
+    }
   }
 
   &_info {

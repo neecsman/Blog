@@ -26,10 +26,17 @@ export interface TextProps {
   variant?: TextVariant;
   size?: TextSize;
   children?: string;
+  trim?: number;
 }
 
 const Text: React.FC<TextProps> = memo(
-  ({ className, children, variant = TextVariant.BASE, size = TextSize.MD }) => {
+  ({
+    className,
+    children,
+    variant = TextVariant.BASE,
+    size = TextSize.MD,
+    trim,
+  }) => {
     return (
       <p
         className={classNames(style.Text, {}, [
@@ -38,7 +45,7 @@ const Text: React.FC<TextProps> = memo(
           style[size],
         ])}
       >
-        {children}
+        {trim ? `${children?.slice(0, trim)}. . .` : children}
       </p>
     );
   }
