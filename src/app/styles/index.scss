@@ -29,15 +29,6 @@
   display: flex;
 }
 
-.page-wrapper {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-  max-height: calc(100vh - var(--navbar-height));
-  overflow-y: auto;
-}
-
 .storybook_wrapper {
   display: flex;
   justify-content: center;

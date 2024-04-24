@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { classNames } from "helpers";
-import { Text } from "shared/ui";
+import { Page, Text } from "shared/ui";
 import style from "./ArticleDetails.module.scss";
 import { useParams } from "react-router-dom";
 import { ArticleDetails } from "entities/Article";
@@ -37,9 +37,9 @@ const ArticleDetail: React.FC<ArticleDetailsProps> = ({ className }) => {
 
   if (!id) {
     return (
-      <div className={classNames(style.articleDetails, {}, [className])}>
+      <Page className={classNames(style.articleDetails, {}, [className])}>
         {t("not_found")}
-      </div>
+      </Page>
     );
   }
 
@@ -53,7 +53,7 @@ const ArticleDetail: React.FC<ArticleDetailsProps> = ({ className }) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <div className={classNames(style.articleDetails, {}, [className])}>
+      <Page className={classNames(style.articleDetails, {}, [className])}>
         <div className={style.articleDetails_section}>
           <ArticleDetails id={id} />
         </div>
@@ -62,7 +62,7 @@ const ArticleDetail: React.FC<ArticleDetailsProps> = ({ className }) => {
           <AddCommentForm onSendComment={onSendComment} />
           <CommentList isLoading={isLoading} comments={comments} />
         </div>
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

@@ -13,6 +13,7 @@ import { useAppDispatch } from "app/providers/StoreProvider/config/store";
 import { EditableProfileCard } from "features/Profile/";
 
 import style from "./Profile.module.scss";
+import { Page } from "shared/ui";
 
 const reducers: ReducersList = {
   profile: profileReducer,
@@ -33,9 +34,9 @@ const Profile: React.FC<ProfileProps> = ({ className }) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <div className={classNames(style.Profile, {}, [className])}>
+      <Page className={classNames(style.Profile, {}, [className])}>
         <EditableProfileCard />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

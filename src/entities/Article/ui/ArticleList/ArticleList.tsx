@@ -16,7 +16,7 @@ const ArticleList: React.FC<ArticleListProps> = (props) => {
   const { className, articles, view = ArticleView.GRID, isLoading } = props;
   const { t } = useTranslation();
 
-  if (isLoading) {
+  const getSceleton = (view: ArticleView) => {
     return (
       <div
         className={classNames(style.articleList, {}, [className, style[view]])}
@@ -28,7 +28,7 @@ const ArticleList: React.FC<ArticleListProps> = (props) => {
           ))}
       </div>
     );
-  }
+  };
 
   const renderArticle = (article: Article) => {
     return <ArticleListItem key={article.id} article={article} view={view} />;
@@ -39,6 +39,7 @@ const ArticleList: React.FC<ArticleListProps> = (props) => {
       className={classNames(style.articleList, {}, [className, style[view]])}
     >
       {articles.length > 0 ? articles.map(renderArticle) : null}
+      {isLoading && getSceleton(view)}
     </div>
   );
 };

@@ -64,7 +64,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
   }
 
   return (
-    <div className={classNames(style.navbar)}>
+    <header className={classNames(style.navbar)}>
       <div className={style.btn_group}>
         <div className={style.switcher}>
           <ThemeSwithcer />
@@ -72,7 +72,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
           {authBtn}
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 

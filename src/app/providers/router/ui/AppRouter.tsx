@@ -11,9 +11,7 @@ import ProtectRoute from "./ProtectRoute";
 const AppRouter = () => {
   const renderWithProtect = (route: AppRouteProps) => {
     const element = (
-      <Suspense fallback={<PageLoader />}>
-        <div className="page-wrapper">{route.element}</div>
-      </Suspense>
+      <Suspense fallback={<PageLoader />}>{route.element}</Suspense>
     );
 
     return (

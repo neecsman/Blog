@@ -6,7 +6,10 @@ import {
 
 import { Article, ArticleView } from "entities/Article";
 import { StateSchema } from "app/providers/StoreProvider";
-import { ArticlePageScheme } from "../types/article";
+import {
+  ArticleListResponseData,
+  ArticlePageSchema,
+} from "../types/articlePageSchema";
 import { fetchArticlesList } from "../api/fetchArtilcesList/fetchArticlesList";
 import { VIEW_LOCALSTORAGE_KEY } from "shared/const/localstorage";
 
@@ -19,21 +22,28 @@ export const getArticles = articlesAdapter.getSelectors<StateSchema>(
 );
 
 export const articlesPageSlice = createSlice({
-  name: "article",
-  initialState: articlesAdapter.getInitialState<ArticlePageScheme>({
+  name: "articleSlice",
+  initialState: articlesAdapter.getInitialState<ArticlePageSchema>({
     isLoading: false,
     error: undefined,
     view: ArticleView.GRID,
     ids: [],
     entities: {},
+    page: 1,
+    hasMore: true,
   }),
   reducers: {
     setView: (state, action: PayloadAction<ArticleView>) => {
       state.view = action.payload;
       localStorage.setItem(VIEW_LOCALSTORAGE_KEY, action.payload);
     },
+    setPage: (state, action: PayloadAction<number>) => {
+      state.page = action.payload;
+    },
     initState: (state) => {
-      state.view = localStorage.getItem(VIEW_LOCALSTORAGE_KEY) as ArticleView;
+      const view = localStorage.getItem(VIEW_LOCALSTORAGE_KEY) as ArticleView;
+      state.view = view;
+      state.limit = view === ArticleView.ROW ? 4 : 12;
     },
   },
   extraReducers: (builder) => {
@@ -45,9 +55,10 @@ export const articlesPageSlice = createSlice({
 
       .addCase(
         fetchArticlesList.fulfilled,
-        (state, action: PayloadAction<Article[]>) => {
+        (state, action: PayloadAction<ArticleListResponseData>) => {
           state.isLoading = false;
-          articlesAdapter.setAll(state, action.payload);
+          articlesAdapter.addMany(state, action.payload.articles);
+          state.hasMore = state.ids.length < action.payload.total;
         }
       )
       .addCase(fetchArticlesList.rejected, (state, action) => {

@@ -36,7 +36,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className, theme }) => {
   }, []);
 
   return (
-    <div
+    <menu
       data-testid="sidebar"
       className={classNames(style.sidebar, { [style.collapsed]: collapsed }, [
         className,
@@ -73,7 +73,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className, theme }) => {
           {t("new article")}
         </Button>
       </div> */}
-    </div>
+    </menu>
   );
 };
 

@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { classNames } from "helpers";
 import style from "./Articles.module.scss";
-import { Article, ArticleList, ArticleView } from "entities/Article";
+import { ArticleList, ArticleView } from "entities/Article";
 import { useSelector } from "react-redux";
 import DynamicModuleLoader, {
   ReducersList,
@@ -19,8 +19,9 @@ import {
   getArticlesPageIsLoading,
   getArticlesPageView,
 } from "../model/selectors/articles";
-import { Text } from "shared/ui";
+import { Page } from "shared/ui";
 import { ArticleViewSwitcher } from "features/Article";
+import { fetchNextArticlesList } from "../model/api/fetchNextArticleList/fetchNextArticleList";
 
 interface ArticlesProps {
   className?: string;
@@ -32,6 +33,8 @@ const reducers: ReducersList = {
 
 const Articles: React.FC<ArticlesProps> = ({ className }) => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+
   const articles = useSelector(getArticles.selectAll);
   const isLoading = useSelector(getArticlesPageIsLoading);
   const error = useSelector(getArticlesPageError);
@@ -41,19 +44,24 @@ const Articles: React.FC<ArticlesProps> = ({ className }) => {
     dispatch(articlesPageAction.setView(view));
   };
 
-  const dispatch = useAppDispatch();
+  const onLoadNextData = () => {
+    dispatch(fetchNextArticlesList());
+  };
 
   useEffect(() => {
-    dispatch(fetchArticlesList());
     dispatch(articlesPageAction.initState());
-  }, [dispatch]);
+    dispatch(fetchArticlesList({ page: 1 }));
+  }, []);
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={classNames(style.articles, {}, [className])}>
+      <Page
+        onScrollEnd={onLoadNextData}
+        className={classNames(style.articles, {}, [className])}
+      >
         <ArticleViewSwitcher view={view} onViewClick={onChangeView} />
         <ArticleList view={view} isLoading={isLoading} articles={articles} />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

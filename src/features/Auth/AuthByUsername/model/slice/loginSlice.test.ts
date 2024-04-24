@@ -1,7 +1,5 @@
-import { StateSchema } from "app/providers/StoreProvider";
 import { LoginSchema } from "../types/loginSchema";
 import { loginActions, loginReducer } from "./loginSlice";
-import { loginByUsername } from "../api/loginByUsername/loginByUsername";
 
 describe("loginSlice.test", () => {
   test("should set username", () => {

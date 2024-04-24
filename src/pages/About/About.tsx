@@ -1,5 +1,7 @@
+import { Page } from "shared/ui";
+
 const About = () => {
-  return <div>About</div>;
+  return <Page>About</Page>;
 };
 
 export default About;

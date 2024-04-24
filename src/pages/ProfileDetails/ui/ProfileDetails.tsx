@@ -15,6 +15,7 @@ import DynamicModuleLoader, {
 } from "shared/lib/components/DynamicModuleLoadert";
 import { profileReducer } from "features/Profile";
 import { getUserAuthData } from "entities/User/model/selectors/getUserAuthData";
+import { Page } from "shared/ui";
 
 interface ProfileDetailsProps {
   className?: string;
@@ -48,14 +49,14 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({ className }) => {
 
   return (
     <DynamicModuleLoader reducers={redicers} removeAfterUnmount>
-      <div className={classNames(style.profileDetails, {}, [className])}>
+      <Page className={classNames(style.profileDetails, {}, [className])}>
         <ProfileCard
           data={profile}
           isLoading={isLoading}
           error={error}
           isReadonly
         />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

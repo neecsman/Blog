@@ -26,6 +26,7 @@ const ArticlesViewSwitcher: React.FC<ArticlesViewSwitcherProps> = memo(
       <div className={classNames(style.articlesViewSwitcher, {}, [className])}>
         {viewTypes.map((viewType) => (
           <Button
+            key={viewType.view}
             variant={
               viewType.view === view ? ButtonVariant.SOLID : ButtonVariant.GHOST
             }
