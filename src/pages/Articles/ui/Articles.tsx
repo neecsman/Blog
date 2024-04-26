@@ -13,15 +13,17 @@ import {
 } from "../model/slice/articleSlice";
 import { useAppDispatch } from "app/providers/StoreProvider/config/store";
 import { memo, useEffect } from "react";
-import { fetchArticlesList } from "../model/api/fetchArtilcesList/fetchArticlesList";
+
 import {
   getArticlesPageError,
+  getArticlesPageInited,
   getArticlesPageIsLoading,
   getArticlesPageView,
 } from "../model/selectors/articles";
 import { Page } from "shared/ui";
 import { ArticleViewSwitcher } from "features/Article";
 import { fetchNextArticlesList } from "../model/api/fetchNextArticleList/fetchNextArticleList";
+import { initArticlesPage } from "../model/api/initArticlesPage/initArticlesPage";
 
 interface ArticlesProps {
   className?: string;
@@ -49,12 +51,11 @@ const Articles: React.FC<ArticlesProps> = ({ className }) => {
   };
 
   useEffect(() => {
-    dispatch(articlesPageAction.initState());
-    dispatch(fetchArticlesList({ page: 1 }));
+    dispatch(initArticlesPage());
   }, []);
 
   return (
-    <DynamicModuleLoader reducers={reducers}>
+    <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
       <Page
         onScrollEnd={onLoadNextData}
         className={classNames(style.articles, {}, [className])}

@@ -1,4 +1,4 @@
-import { FC, MutableRefObject, useEffect, useRef } from "react";
+import { MutableRefObject, useEffect } from "react";
 
 export interface useInfinitieScrollProps {
   callback?: () => void;
@@ -16,7 +16,7 @@ export const useInfinitieScroll = ({
     if (callback) {
       let options = {
         root: wrapperRef.current,
-        rootMargin: "0px",
+        rootMargin: "1px",
         threshold: 1,
       };
 

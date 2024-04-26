@@ -28,7 +28,7 @@ export interface StateSchema {
 }
 
 export type StateSchemaKey = keyof StateSchema;
-
+export type MountedReducers = OptionalRecord<StateSchemaKey, boolean>;
 export interface ReducerManager {
   getReducerMap: () => ReducersMapObject<StateSchema>;
   reduce: (state: StateSchema, action: Action) => StateSchema;

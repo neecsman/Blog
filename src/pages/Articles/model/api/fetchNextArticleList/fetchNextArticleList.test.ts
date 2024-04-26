@@ -16,6 +16,7 @@ describe("fetchNextArticleList.test", () => {
         limit: 5,
         hasMore: true,
         view: ArticleView.GRID,
+        _inited: true,
       },
     });
 
@@ -35,6 +36,7 @@ describe("fetchNextArticleList.test", () => {
         limit: 5,
         hasMore: false,
         view: ArticleView.GRID,
+        _inited: true,
       },
     });
 

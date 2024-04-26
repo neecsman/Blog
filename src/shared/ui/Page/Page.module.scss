@@ -1,7 +1,7 @@
 .pageWrapper {
   flex-grow: 1;
   flex-shrink: 100;
-  padding: 20px;
+  padding: 2rem;
   max-height: calc(100vh - var(--navbar-height));
   overflow-y: auto;
 }
