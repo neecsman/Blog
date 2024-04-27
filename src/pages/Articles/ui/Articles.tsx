@@ -24,6 +24,7 @@ import { Page } from "shared/ui";
 import { ArticleViewSwitcher } from "features/Article";
 import { fetchNextArticlesList } from "../model/api/fetchNextArticleList/fetchNextArticleList";
 import { initArticlesPage } from "../model/api/initArticlesPage/initArticlesPage";
+import { Sidebar } from "widgets/Sidebar";
 
 interface ArticlesProps {
   className?: string;
@@ -60,8 +61,8 @@ const Articles: React.FC<ArticlesProps> = ({ className }) => {
         onScrollEnd={onLoadNextData}
         className={classNames(style.articles, {}, [className])}
       >
-        <ArticleViewSwitcher view={view} onViewClick={onChangeView} />
         <ArticleList view={view} isLoading={isLoading} articles={articles} />
+        {/* <ArticleViewSwitcher view={view} onViewClick={onChangeView} /> */}
       </Page>
     </DynamicModuleLoader>
   );

@@ -43,14 +43,14 @@ const Sidebar: React.FC<SidebarProps> = ({ className, theme }) => {
         theme,
       ])}
     >
-      <Button
+      {/* <Button
         variant={ButtonVariant.OUTLINE}
         className={style.collapseBtn}
         data-testid="sidebar-toggle"
         onClick={onToggle}
         size={ButtonSize.L}
         icon={<SidebarIcon />}
-      />
+      /> */}
 
       <div className={style.menu}>
         {sidebarItems.map(({ Icon, text, path }) => (

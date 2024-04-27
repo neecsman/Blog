@@ -6,10 +6,13 @@ import { Navbar } from "widgets/Navbar";
 import { Sidebar } from "widgets/Sidebar";
 import PageLoader from "widgets/PageLoader/ui/PageLoader";
 
-import "./styles/index.scss";
 import { useAppDispatch } from "./providers/StoreProvider/config/store";
 import { getUserInited, userActions } from "entities/User";
 import { useSelector } from "react-redux";
+
+import "./styles/index.scss";
+
+import style from "./app.module.scss";
 
 const App = () => {
   const { theme } = useTheme();
@@ -25,9 +28,13 @@ const App = () => {
     <div className={classNames("app", {}, [theme])}>
       <Suspense fallback={<PageLoader />}>
         <Navbar />
-        <div className="content-page">
-          <Sidebar />
-          {inited && <AppRouter />}
+
+        <div className={style.app_layout}>
+          <div className={style.aside_left}>
+            <Sidebar />
+          </div>
+          <div className={style.content}>{inited && <AppRouter />}</div>
+          <div className={style.aside_right}></div>
         </div>
       </Suspense>
     </div>

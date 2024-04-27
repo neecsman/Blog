@@ -1,7 +1,7 @@
 import React from "react";
 import { classNames } from "helpers";
 
-import { Button } from "shared/ui";
+import { Button, Text } from "shared/ui";
 import {
   ButtonSize,
   ButtonVariant,
@@ -19,6 +19,8 @@ import { useAppDispatch } from "app/providers/StoreProvider/config/store";
 import { userActions } from "entities/User";
 import { ThemeSwithcer } from "widgets/ThemeSwitcher";
 import { LangSwitcher } from "widgets/LangSwitcher";
+import { Search } from "widgets/Search";
+import { TextSize, TextVariant } from "shared/ui/Text/Text";
 
 interface NavbarProps {
   className?: string;
@@ -64,12 +66,22 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
   }
 
   return (
-    <header className={classNames(style.navbar)}>
-      <div className={style.btn_group}>
-        <div className={style.switcher}>
-          <ThemeSwithcer />
-          <LangSwitcher className={style.lang} />
-          {authBtn}
+    <header className={classNames(style.navbar_wrapper)}>
+      <div className={style.navbar}>
+        <div className={style.logo}>
+          <Text variant={TextVariant.TITLE} size={TextSize["4XL"]}>
+            NK
+          </Text>
+        </div>
+        <div className={style.search}>
+          <Search />
+        </div>
+        <div className={style.btn_group}>
+          <div className={style.switcher}>
+            <ThemeSwithcer />
+            <LangSwitcher className={style.lang} />
+            {authBtn}
+          </div>
         </div>
       </div>
     </header>

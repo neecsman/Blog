@@ -14,10 +14,11 @@ import { LoginSchema } from "features/Auth/AuthByUsername";
 import { ArticleDeatailsCommentSchema } from "pages/ArticleDetails";
 import { AddCommentFormSchema } from "features/ArticleDetails/addCommentForm";
 import { ArticlePageSchema } from "pages/Articles";
+import { ScrollSaveSchema } from "features/ScrollSave/model/types/ScrollSaveSchema";
 
 export interface StateSchema {
   user: UserSchema;
-
+  scrollSave: ScrollSaveSchema;
   //async reducers
   loginForm?: LoginSchema;
   profile?: ProfileSchema;

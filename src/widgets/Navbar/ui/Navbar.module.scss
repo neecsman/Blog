@@ -1,4 +1,6 @@
-.navbar {
+.navbar_wrapper {
+  position: sticky;
+  top: 0;
   width: 100%;
   height: var(--navbar-height);
   background: var(--inverted-bg-color);
@@ -6,12 +8,34 @@
   align-items: center;
   padding: 20px;
   transition: var(--theme-transition);
+  box-shadow: var(--shadow-sm);
+  z-index: 10;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+}
+
+.logo {
+  flex: 1;
+}
+
+.search {
+  flex: 2;
+  max-width: 600px;
 }
 
 .btn_group {
+  flex: 1;
   display: flex;
+  justify-content: end;
   gap: 5px;
-  margin-left: auto;
+  // margin-left: auto;
 }
 
 .switcher {

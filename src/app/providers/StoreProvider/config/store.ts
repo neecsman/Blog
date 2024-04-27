@@ -4,7 +4,8 @@ import { userReducer } from "entities/User";
 import { createReducerManager } from "./reducerManager";
 import { useDispatch } from "react-redux";
 import api from "shared/api/api";
-import { NavigateOptions, To } from "react-router-dom";
+
+import { scrollSaveReducer } from "features/ScrollSave";
 
 export default function createReduxStore(
   initialState?: StateSchema,
@@ -13,6 +14,7 @@ export default function createReduxStore(
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
     user: userReducer,
+    scrollSave: scrollSaveReducer,
   };
 
   const reducerManager = createReducerManager(rootReducers);
