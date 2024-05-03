@@ -1,5 +1,5 @@
 import { classNames } from "helpers";
-import { MutableRefObject, memo, useEffect, useRef } from "react";
+import { MutableRefObject, memo, useEffect, useRef, useState } from "react";
 import { useInfinitieScroll } from "shared/lib/hooks/useInfinitieScroll/useInfinitieScroll";
 import { useAppDispatch } from "app/providers/StoreProvider/config/store";
 import { getScrollSaveByPath, scrollSaveActions } from "features/ScrollSave";
@@ -15,42 +15,53 @@ interface PageProps {
   className?: string;
   children: React.ReactNode;
   onScrollEnd?: () => void;
+  isLoading?: boolean;
 }
 
-const Page: React.FC<PageProps> = ({ className, children, onScrollEnd }) => {
+const Page: React.FC<PageProps> = ({
+  className,
+  children,
+  onScrollEnd,
+  isLoading,
+}) => {
   const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
   const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
+  const dispatch = useAppDispatch();
   const { pathname } = useLocation();
 
   const scrollPosition = useSelector((state: StateSchema) =>
     getScrollSaveByPath(state, pathname)
   );
 
-  const dispatch = useAppDispatch();
-
   useInfinitieScroll({
     callback: onScrollEnd,
     triggerRef,
-    wrapperRef,
   });
 
   useEffect(() => {
-    wrapperRef.current.scrollTop = scrollPosition;
-  }, []);
+    if (!isLoading) {
+      wrapperRef.current.scrollTop = scrollPosition;
+    }
+  }, [isLoading]);
 
-  const onScroll = useThrottle((e: React.UIEvent<HTMLElement, UIEvent>) => {
+  const onScroll = useThrottle(() => {
     dispatch(
       scrollSaveActions.setScrollPosition({
         path: pathname,
-        position: e.currentTarget.scrollTop,
+        position: window.scrollY,
       })
     );
-  }, 500);
+  }, 200);
+
+  useEffect(() => {
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <section ref={wrapperRef} className={style.pageWrapper} onScroll={onScroll}>
+    <section ref={wrapperRef} className={style.pageWrapper}>
       <div className={classNames(style.page, {}, [className])}>{children}</div>
-      {onScrollEnd && <div ref={triggerRef} />}
+      {onScrollEnd && <div className={style.trigger} ref={triggerRef} />}
     </section>
   );
 };

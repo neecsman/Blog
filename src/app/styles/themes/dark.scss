@@ -1,3 +1,10 @@
+:root {
+  [data-theme="dark"] {
+    --scrollbar-track-color: #2b2b2b;
+    --scrollbar-thumb-color: #666;
+  }
+}
+
 .app.dark {
   --inverted-bg-color: #202020;
   --bg-color: #191919;

@@ -12,8 +12,6 @@ import { useSelector } from "react-redux";
 
 import "./styles/index.scss";
 
-import style from "./app.module.scss";
-
 const App = () => {
   const { theme } = useTheme();
 
@@ -29,12 +27,12 @@ const App = () => {
       <Suspense fallback={<PageLoader />}>
         <Navbar />
 
-        <div className={style.app_layout}>
-          <div className={style.aside_left}>
+        <div className="layout">
+          <div className={"aside_left"}>
             <Sidebar />
           </div>
-          <div className={style.content}>{inited && <AppRouter />}</div>
-          <div className={style.aside_right}></div>
+          <div className={"content"}>{inited && <AppRouter />}</div>
+          <div className={"aside_right"}></div>
         </div>
       </Suspense>
     </div>

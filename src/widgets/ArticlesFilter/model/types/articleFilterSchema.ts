@@ -1,4 +1,4 @@
-export type SortOrder = "asc" | "desc";
+export type FilterOrderBy = "asc" | "desc";
 
 export enum ArticleSortField {
   VIEWS = "views",
@@ -7,7 +7,6 @@ export enum ArticleSortField {
 }
 
 export interface ArticleSortSchema {
-  order: SortOrder;
+  order: FilterOrderBy;
   sort: ArticleSortField;
-  search: string;
 }

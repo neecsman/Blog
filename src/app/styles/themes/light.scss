@@ -1,3 +1,10 @@
+:root {
+  [data-theme="light"] {
+    --scrollbar-track-color: #ffffff;
+    --scrollbar-thumb-color: #c0c0c0;
+  }
+}
+
 .app.light {
   --bg-color: #f7f7f7;
   --inverted-bg-color: #fdfdfd;

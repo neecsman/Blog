@@ -49,7 +49,10 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({ className }) => {
 
   return (
     <DynamicModuleLoader reducers={redicers} removeAfterUnmount>
-      <Page className={classNames(style.profileDetails, {}, [className])}>
+      <Page
+        className={classNames(style.profileDetails, {}, [className])}
+        isLoading={isLoading}
+      >
         <ProfileCard
           data={profile}
           isLoading={isLoading}

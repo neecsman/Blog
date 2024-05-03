@@ -10,15 +10,16 @@ import AboutIcon from "shared/assets/icons/info.svg";
 export const getSidebarItems = createSelector(getUserAuthData, (userData) => {
   const sidebarItemsList: SidebarItemType[] = [
     {
-      path: RouterPath.main,
-      text: "route.main",
-      Icon: MainIcon,
-    },
-    {
       path: RouterPath.articles,
       text: "route.articles",
       Icon: ArticlesIcon,
     },
+    {
+      path: RouterPath.main,
+      text: "route.main",
+      Icon: MainIcon,
+    },
+
     {
       path: RouterPath.about,
       text: "route.about",

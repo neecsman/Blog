@@ -3,23 +3,21 @@ import { MutableRefObject, useEffect } from "react";
 export interface useInfinitieScrollProps {
   callback?: () => void;
   triggerRef: MutableRefObject<HTMLElement>;
-  wrapperRef: MutableRefObject<HTMLElement>;
 }
 
 export const useInfinitieScroll = ({
   callback,
   triggerRef,
-  wrapperRef,
 }: useInfinitieScrollProps) => {
   useEffect(() => {
     let observer: IntersectionObserver | null = null;
-    if (callback) {
-      let options = {
-        root: wrapperRef.current,
-        rootMargin: "1px",
-        threshold: 1,
-      };
+    let options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 1,
+    };
 
+    if (callback) {
       observer = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) {
           callback();
@@ -36,5 +34,5 @@ export const useInfinitieScroll = ({
         }
       }
     };
-  }, [triggerRef, wrapperRef]);
+  }, [triggerRef]);
 };

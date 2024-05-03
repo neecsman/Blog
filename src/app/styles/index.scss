@@ -3,18 +3,23 @@
 @import "themes/dark.scss";
 @import "themes/light.scss";
 
-::-webkit-scrollbar {
-  width: 8px; /* ширина scrollbar */
-  height: 8px;
+body {
+  scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
 }
-::-webkit-scrollbar-track {
-  // background: var(--inverted-bg-color); /* цвет дорожки */
-  background: transparent; /* цвет дорожки */
-  border-radius: var(--rounded-xl);
+
+/* Стили для Webkit-браузеров (Safari, старые версии Chrome и т.д.) */
+body::-webkit-scrollbar {
+  width: 12px;
 }
-::-webkit-scrollbar-thumb {
-  background-color: var(--color-gray); /* цвет плашки */
-  border-radius: 20px; /* закругления плашки */
+
+body::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-color);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-color);
+  border-radius: 6px;
+  border: 3px solid var(--scrollbar-track-color);
 }
 
 .app {
@@ -25,8 +30,23 @@
   transition: background 0.2s ease;
 }
 
-.content-page {
+.layout {
   display: flex;
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+}
+
+.aside_left {
+  flex: 1;
+}
+
+.content {
+  flex: 2;
+}
+
+.aside_right {
+  flex: 1;
+  width: 100%;
 }
 
 .storybook_wrapper {

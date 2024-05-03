@@ -1,9 +1,11 @@
 .sidebar {
-  height: calc(100vh - var(--navbar-height));
+  // height: calc(100vh - var(--navbar-height));
   width: var(--sidebar-width);
   // background: var(--inverted-bg-color);
+  padding: 2rem 0;
   position: sticky;
-  top: calc(var(--navbar-height) + 2rem);
+  top: (calc(--navbar-height));
+  top: calc(var(--navbar-height));
   transition: var(--theme-transition);
 }
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   LOCAL_STORAGE_THEME_KEY,
   ThemeContext,
@@ -10,6 +10,10 @@ const defaultTheme =
 
 const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [theme, setTheme] = useState<Theme>(defaultTheme);
+
+  useEffect(() => {
+    document.body.setAttribute("data-theme", defaultTheme);
+  }, []);
 
   return (
     <ThemeContext.Provider
